@@ -10,6 +10,6 @@ services:
         working_dir: /app
         ports:
             - "3000:3000"
-        image: etelie-web-image
+        image: etelie-web
         environment:
             - DATABASE_URL="localhost:5432"
