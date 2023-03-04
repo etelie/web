@@ -1,25 +1,25 @@
-# Etelie website
+# etelie website
 Web application, branding, user experience
 
 ### Development environment setup
-1. Install Homebrew and add it to your PATH
+#### 1. Install Homebrew and add it to your PATH
 
 Homebrew will be used to install necessary utilitites.
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-2. Install AWS CLI tools
+#### 2. Install AWS CLI tools
 
 The AWS CLI and AWS Vault allow us to connect to AWS from local consoles as well as through an SDK.
 
     brew install awscli aws-vault
 
 
-3. Set up AWS Vault
+#### 3. Configure AWS Vault
 
 AWS Vault is a conveinent utility which simplifies the use of multiple AWS account roles.
 
-#### Environment setup
+##### Environment setup
 
 Check that aws-vault was installed properly by querying the version
 
@@ -30,7 +30,7 @@ By default, aws-vault will store your credentials in a brand new keychain vault.
     export AWS_VAULT_KEYCHAIN_NAME=login  # fewer keychain password prompts
     export AWS_VAULT_PROMPT=osascript     # nice dialog prompt for entering mfa auth token
 
-#### Configuring credentials
+##### Configuring credentials
 
 If you have not already been given AWS access keys, send an email to devops@etelie.com to request access.
 
@@ -70,7 +70,7 @@ You should now be able to log in to the AWS console with each of your allowed ro
 
 Note: You should not have an `~/.aws/credentials` file.
 
-#### Usage
+##### Usage
 
 To test you can use the AWS CLI with a specific profile:
 
@@ -87,7 +87,7 @@ Run a credential server with AWS vault to allow local services using the AWS SDK
     ps               # aws-vault forks a separate process to run the server
     exit
 
-#### Useful shell configurations
+##### Useful shell configurations
 
 ```sh
 ### aws-vault
@@ -98,10 +98,20 @@ function aws_vault_with_profile() {
 }
 
 alias awsp='aws_vault_with_profile $1'
-alias currentvaultpid='echo $(ps -ef | grep "[a]ws-vault exec" | cut -f3 -w)'
+alias currentvaultpid='echo $(ps -ef | grep "[a]ws-vault exec" | cut -f3 --delim=" ")'
 alias currentvaultkill='kill -9 $(currentvaultpid)'
 alias currentvault='echo "$(test -z $AWS_VAULT && echo "*" || echo $AWS_VAULT) $(currentvaultpid)"'
 ```
+
+##### Troubleshooting
+
+###### `sudo` can't find aws-vault
+You may encounter the following error resulting from `sudo` not having access to `aws-vault` in the system `PATH`.
+
+    sudo: aws-vault: command not found
+    aws-vault: error: exec: Failed to start credential server: exit status 1
+
+To fix this, edit `/etc/sudoers`, and add the path to the `aws-vault` binary to the `secure_path` variable.
 
 ### Deployment process
 Coming soon
