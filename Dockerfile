@@ -1,6 +1,6 @@
 ##### DEPENDENCIES
 
-FROM --platform=linux/amd64 node:16-alpine3.17 AS deps
+FROM --platform=linux/amd64 node:19.7-alpine3.17 AS deps
 RUN apk add --no-cache libc6-compat openssl1.1-compat
 WORKDIR /app
 
@@ -10,18 +10,16 @@ COPY prisma ./
 
 # Install dependencies based on the preferred package manager
 
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml\* ./
+COPY package.json package-lock.json* ./
 
 RUN \
- if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
- elif [ -f package-lock.json ]; then npm ci; \
- elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i; \
+ if [ -f package-lock.json ]; then npm ci; \
  else echo "Lockfile not found." && exit 1; \
  fi
 
 ##### BUILDER
 
-FROM --platform=linux/amd64 node:16-alpine3.17 AS builder
+FROM --platform=linux/amd64 node:19-alpine3.17 AS builder
 ARG DATABASE_URL
 ARG NEXT_PUBLIC_CLIENTVAR
 WORKDIR /app
@@ -39,11 +37,10 @@ RUN \
 
 ##### RUNNER
 
-FROM --platform=linux/amd64 node:16-alpine3.17 AS runner
+FROM --platform=linux/amd64 node:19-alpine3.17 AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
-
 ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup --system --gid 1001 nodejs

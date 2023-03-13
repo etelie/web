@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-    app:
+    web:
         platform: "linux/amd64"
         build:
             context: .
@@ -10,6 +10,6 @@ services:
         working_dir: /app
         ports:
             - "3000:3000"
-        image: etelie-web
+        image: ${REPOSITORY_HOST}/${ORG_ID}/${MODULE_ID}:${PROJECT_VERSION}-${BUILD_NUMBER}
         environment:
             - DATABASE_URL="localhost:5432"
