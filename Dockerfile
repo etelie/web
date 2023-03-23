@@ -1,6 +1,6 @@
 ##### DEPENDENCIES
 
-FROM --platform=linux/amd64 node:19.7-alpine3.17 AS deps
+FROM arm64v8/node:19-alpine3.16 AS deps
 RUN apk add --no-cache libc6-compat openssl1.1-compat
 WORKDIR /app
 
@@ -13,13 +13,13 @@ COPY prisma ./
 COPY package.json package-lock.json* ./
 
 RUN \
- if [ -f package-lock.json ]; then npm ci; \
- else echo "Lockfile not found." && exit 1; \
- fi
+    if [ -f package-lock.json ]; then npm clean install; \
+    else echo "Lockfile not found." && exit 1; \
+    fi
 
 ##### BUILDER
 
-FROM --platform=linux/amd64 node:19-alpine3.17 AS builder
+FROM arm64v8/node:19-alpine3.16 AS builder
 ARG DATABASE_URL
 ARG NEXT_PUBLIC_CLIENTVAR
 WORKDIR /app
@@ -29,15 +29,13 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN \
- if [ -f yarn.lock ]; then SKIP_ENV_VALIDATION=1 yarn build; \
- elif [ -f package-lock.json ]; then SKIP_ENV_VALIDATION=1 npm run build; \
- elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && SKIP_ENV_VALIDATION=1 pnpm run build; \
- else echo "Lockfile not found." && exit 1; \
- fi
+    if [ -f package-lock.json ]; then SKIP_ENV_VALIDATION=1 npm run build; \
+    else echo "Lockfile not found." && exit 1; \
+    fi
 
 ##### RUNNER
 
-FROM --platform=linux/amd64 node:19-alpine3.17 AS runner
+FROM arm64v8/node:19-alpine3.16 AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
