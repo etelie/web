@@ -1,0 +1,23 @@
+##### Build Docker image from .next/ project outputs
+
+FROM arm64v8/node:19-alpine3.16
+WORKDIR /next
+
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
+ENV PORT 3000
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY next.config.mjs ./
+COPY public ./public
+COPY package.json ./package.json
+
+COPY --chown=nextjs:nodejs .next/standalone ./
+COPY --chown=nextjs:nodejs .next/static ./.next/static
+
+USER nextjs
+EXPOSE ${PORT}
+
+CMD ["node", "server.js"]

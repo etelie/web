@@ -4,29 +4,28 @@ Web application, branding, user experience
 
 ### Development environment setup
 
-1. Install Node.js
+#### 0. Clone this repository
 
-Install `nvm`
+    git clone git@github.com:etelie/web.git
 
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")" \
-        [ -s "$NVM_DIR/nvm.sh" ] && \
-        \. "$NVM_DIR/nvm.sh"
+#### 1. Install Node.js
 
-Install Node.js (version 19.7.x)
+Node.js is the server-side JavaScript engine we use to run the web application. To manage Node versioning, first install the Node Version Manager (`nvm`)
 
-    nvm install 19.7
-    nvm use 19.7
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-2. Install project dependencies
+Add the `NVM_DIR` environment variable definition to your shell configuration
 
-Dependencies for Node projects are defined in `package.json`, with versioning configured in `package-lock.json`.
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-    npm install
+Install Node version 18.15
 
-3. Environment variables
+    nvm install v18.15
 
-The application uses `.env` to look up environment configurations. Since `.env` may contain secrets, it is ignored by version control. Instead, `.env.template` is checked in to Git, and you must manually copy `.env.template` into `.env`, and subsequently fill the necessary secrets. Send an email to devops@etelie.com to request needed secrets.
+#### 2. Environment variables
+
+Our environment variable file, `.env`, is ignored by version control because it contains secrets. The file `.env.template` is instead checked-in, but it is incomplete. Copy `.env.template` into `.env` and fill the missing values as necessary. Email devops@etelie.com to request necessary secrets.
 
     cp .env.template .env
 
@@ -43,10 +42,6 @@ Environment variables are specified in `.env`. If you need to add an environment
 3. Add a Zod type validator to `src/env.mjs`
 
 Client environment variables are built into the Docker image as build arguments. Server variables are injected at runtime as regular environment variables unto the container.
-
-### Deployment process
-
-Coming soon
 
 ### Contribution guidelines
 
