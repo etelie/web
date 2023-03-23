@@ -1,8 +1,12 @@
-.env
-Dockerfile
+.idea/
+.next/
+.git/
+node_modules/
+
 .dockerignore
-node_modules
+.env
+.env.template
+.gitignore
+Dockerfile
 npm-debug.log
 README.md
-.next
-.git
