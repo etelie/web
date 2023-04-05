@@ -4,7 +4,6 @@
 node_modules/
 
 .dockerignore
-.env
 .env.template
 .gitignore
 Dockerfile

@@ -1,0 +1,32 @@
+version: "3.9"
+
+volumes:
+  web-postgres:
+
+services:
+  web:
+    platform: "linux/arm64/v8"
+    build:
+      context: ../../
+      dockerfile: docker/web/app/Dockerfile.dev
+    working_dir: /app
+    ports:
+      - "3001:3000"
+    image: etelie/web
+    environment:
+      - DATABASE_URL="postgres:5435"
+
+  postgres:
+    platform: "linux/arm64/v8"
+    build:
+      context: postgres/
+      dockerfile: Dockerfile
+    ports:
+      - '5435:5432'
+    restart: always
+    container_name: web-postgres
+    volumes:
+      - type: volume
+        source: web-postgres
+        target: /var/lib/postgresql/data
+
