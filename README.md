@@ -36,6 +36,8 @@ The web application utilizes a Postgres database. For local development, you can
     cd ./docker/web
     docker compose up postgres
 
+The PostgreSQL server is pre-configured for the user "postgres" with password "password".
+
 ### Development notes
 
 - #### Environment variables
