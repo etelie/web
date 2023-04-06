@@ -14,13 +14,15 @@ services:
       - "3001:3000"
     image: etelie/web
     environment:
-      - DATABASE_URL="postgres:5435"
+      - DATABASE_URL="postgres:5432"
 
   postgres:
     platform: "linux/arm64/v8"
     build:
       context: postgres/
       dockerfile: Dockerfile
+      args:
+        - POSTGRES_PASSWORD=password
     ports:
       - '5435:5432'
     restart: always

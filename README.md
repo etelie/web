@@ -29,6 +29,15 @@ Our environment variable file, `.env`, is ignored by version control because it 
 
     cp .env.template .env
 
+#### 3. Database
+
+The web application utilizes a Postgres database. For local development, you can easily launch a PostgreSQL instance with Docker Compose.
+
+    cd ./docker/web
+    docker compose up postgres
+
+The PostgreSQL server is pre-configured for the user "postgres" with password "password".
+
 ### Development notes
 
 - #### Environment variables
