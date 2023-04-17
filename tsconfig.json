@@ -28,7 +28,7 @@
         "name": "next"
       }
     ],
-    "types": ["node", "vitest"]
+    "types": ["node", "vitest", "vite/client"]
   },
   "include": [
     ".eslintrc.cjs",

@@ -30,6 +30,8 @@ export default defineConfig({
     devSourcemap: true,
   },
   server: {
+    host: true, // needed for the Docker port mapping to work
+    strictPort: true,
     port: 3000,
     https: true,
   },
