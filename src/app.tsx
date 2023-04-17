@@ -1,5 +1,4 @@
 import { useState } from "react";
-import reactLogo from "@/assets/react.svg";
 import etelieLogo from "/icon/etelie.svg";
 import "./app.css";
 
