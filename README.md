@@ -46,12 +46,12 @@ The PostgreSQL server is pre-configured for the user "postgres" with password "p
 
 - #### Environment variables
 
-Environment variables are specified in `.env`. If you need to add an environment variable, there is a three-step process you must follow:
+Environment variables are specified in `env/.env`. If you need to add an environment variable, there is a three-step process you must follow:
 
-1. Add the variable to `.env`
+1. Add the variable to `env/.env`
     - If the variable should be exposed to the client, prefix it with `CLIENT__` (defined in vite.config.ts)
     - Never allow secrets to be visible to the client
-2. If the value is not secret, add it to `.env.template`. If the value is secret, still add the variable to the template file, but leave it unassigned. (e.g. `TWITTER_API_TOKEN=`)
+2. If the value is not secret, add it to `env/.env.template`. If the value is secret, still add the variable to the template file, but leave it unassigned. (e.g. `TWITTER_API_TOKEN=`)
 3. Add a type declaration for the environment variable to `src/vite-env.d.ts`
 
 Client environment variables are built into the Docker image as build arguments. Server variables are injected at runtime as regular environment variables unto the container.
