@@ -31,6 +31,10 @@ Our environment variable file, `.env`, is ignored by version control because it 
 
 #### 3. Database
 
+The current plan is to separate the web server entirely from the application's data layer, forcing the web server to query HTTP APIs provided by the service layer for database interactions and authentication.
+
+##### Deprecated: PostgreSQL setup
+
 The web application utilizes a Postgres database. For local development, you can easily launch a PostgreSQL instance with Docker Compose.
 
     cd ./docker/web
@@ -45,22 +49,20 @@ The PostgreSQL server is pre-configured for the user "postgres" with password "p
 Environment variables are specified in `.env`. If you need to add an environment variable, there is a three-step process you must follow:
 
 1. Add the variable to `.env`
-    - If the variable should be exposed to the client, prefix it with `NEXT_PUBLIC_`
+    - If the variable should be exposed to the client, prefix it with `CLIENT__` (defined in vite.config.ts)
     - Never allow secrets to be visible to the client
 2. If the value is not secret, add it to `.env.template`. If the value is secret, still add the variable to the template file, but leave it unassigned. (e.g. `TWITTER_API_TOKEN=`)
-3. Add a Zod type validator to `src/env.mjs`
+3. Add a type declaration for the environment variable to `src/vite-env.d.ts`
 
 Client environment variables are built into the Docker image as build arguments. Server variables are injected at runtime as regular environment variables unto the container.
 
 ### Contribution guidelines
 
-Tests
+Testing
 
-- Unit testing is an essential component of the software development lifecycle
+- Testable code should be tested.
 
-- Good code is maintainable code
-
-- Superfluous tests extend build times unnecessarily
+- Code should be designed to be testable.
 
 Code review
 
