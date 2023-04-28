@@ -1,20 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  // darkMode: 'class',
+  prefix: "tw-",
+  plugins: [],
   theme: {
+    // fontFamily: ({ theme }) => ({
+    //   // sans: "Montserrat, " + theme.fontSize,
+    // }),
     extend: {
       colors: {
-        primary: "#FF6363",
-        secondary: {
-          100: "#aaa",
-          200: "#bbb",
+        grayscale: {
+          0: "#ffffff",
+          100: "#f7faf8",
+          1000: "#000000",
         },
-      },
-      fontFamily: {
-        heading: ["Montserrat"],
       },
     },
   },
-  plugins: [],
 };
-
