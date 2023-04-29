@@ -1,21 +1,21 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Icon } from './Icon';
+import { EtelieIcon } from './EtelieIcon';
 
 const meta = {
-  title: 'Icon',
-  component: Icon,
+  title: 'EtelieIcon',
+  component: EtelieIcon,
   parameters: {
     layout: 'centered',
   },
-} satisfies Meta<typeof Icon>;
+} satisfies Meta<typeof EtelieIcon>;
 type Story = StoryObj<typeof meta>;
 
 export default meta;
 
 export const Idle: Story = {
   args: {
-    width: 16,
-    height: 16,
+    width: 48,
+    height: 48,
   },
 };
