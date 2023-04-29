@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { Icon } from '../Icon';
+import { Icon } from '../EtelieIcon';
 
 export const TitleCard = () => (
   <div
