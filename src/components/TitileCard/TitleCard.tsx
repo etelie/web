@@ -10,7 +10,7 @@ export const TitleCard = () => (
       'tw-text-3xl tw-font-sans tw-font-semibold',
       'tw-z-50',
       'tw-border-black tw-border-[8px] tw-rounded-[18px]',
-      'tw-shadow-lg tw-shadow-slate-300',
+      'e-shadow-front',
     )}
   >
     <div

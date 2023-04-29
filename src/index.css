@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .e-shadow-front {
+    @apply tw-shadow-lg tw-shadow-slate-300;
+  }
+}
