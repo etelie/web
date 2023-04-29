@@ -48,7 +48,7 @@ We use the Storybook tool to host a component library which allows us to documen
 
 ### Development notes
 
-- #### Environment variables
+#### Environment variables
 
 Environment variables are specified in `env/.env`. If you need to add an environment variable, there is a three-step process you must follow:
 
@@ -58,9 +58,11 @@ Environment variables are specified in `env/.env`. If you need to add an environ
 2. If the value is not secret, add it to `env/.env.template`. If the value is secret, still add the variable to the template file, but leave it unassigned. (e.g. `TWITTER_API_TOKEN=`)
 3. Add a type declaration for the environment variable to `src/vite-env.d.ts`
 
-### Tailwind CSS
+#### Tailwind CSS
 
 We use the Tailwind CSS framework which makes UI component styling much easier, simpler, and more maintainable. Tailwind works by supplying a broad arrangement of pre-set utility classes which are intended to be applied directly to HTML/JSX elements to generate custom styling rather than writing custom CSS. Custom CSS classes should not be written when a Tailwind utiltity class could be used instead. If custom CSS is necessary, follow the [Tailwind custom styles guidelines](https://tailwindcss.com/docs/adding-custom-styles), preferring to use local "arbitrary values" rather than global custom CSS utilities where practical.
+
+TailwindCSS utility classes use the `t-` prefix. Custom Etelie classes use `e-`. Definitions of these custom `e-` CSS classes should only exist in `src/index.css`. Any component-local styles should be defined using utility classes within the component JSX.
 
 Check out the [Tailwind docs](https://tailwindcss.com/docs) to learn more about the framework.
 
