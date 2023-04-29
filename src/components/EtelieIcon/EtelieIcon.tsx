@@ -9,7 +9,7 @@ export interface IconProps {
 
 export const EtelieIcon = ({ width, height }: IconProps) => (
   <img
-    className={clsx(`tw-w-${width} tw-h-${height}`)}
+    className={clsx(`t-w-${width} t-h-${height}`)}
     src='/icon/etelie.svg'
     width={width}
     height={height}

@@ -5,6 +5,6 @@
 @layer components {
   /* Common shadow style for foreground elements (TitleCard, Modal, etc.) */
   .e-shadow-fore {
-    @apply tw-shadow-lg tw-shadow-slate-300;
+    @apply t-shadow-lg t-shadow-slate-300;
   }
 }
