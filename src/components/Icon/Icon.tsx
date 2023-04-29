@@ -1,13 +1,15 @@
-import type { TailwindValue } from "~/types"
+import type { TailwindValue } from '~/types';
 
-export const Icon = ({
-    width,
-    height,
-}: {
-    width: TailwindValue,
-    height: TailwindValue,
-}) => (
-    <div className={`tw-w-${width} tw-h-${height}`}>
-        <img className="tw-w-full tw-h-full" src="/icon/etelie.svg" />
-    </div>
-)
+export type IconProps = {
+  width: TailwindValue;
+  height: TailwindValue;
+};
+
+export const Icon = ({ width, height }: IconProps) => (
+  <img
+    className={`tw-w-${width} tw-h-${height}`}
+    src='/icon/etelie.svg'
+    width={width}
+    height={height}
+  />
+);
