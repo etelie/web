@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer components {
-  .e-shadow-front {
+  /* Common shadow style for foreground elements (TitleCard, Modal, etc.) */
+  .e-shadow-fore {
     @apply tw-shadow-lg tw-shadow-slate-300;
   }
 }

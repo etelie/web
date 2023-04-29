@@ -19,7 +19,7 @@ export const Modal = ({ hidden }: ModalProps) => (
         'tw-w-64 tw-h-64 sm:tw-w-80 md:tw-w-96 lg:tw-w-1/2',
         'tw-bg-black',
         'tw-border-black tw-border-t-[18px] tw-border-x-[6px] tw-border-b-[6px] tw-rounded-xl',
-        'e-shadow-front',
+        'e-shadow-fore',
       )}
     >
       <div
