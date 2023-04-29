@@ -7,5 +7,7 @@ export const Icon = ({
     width: TailwindValue,
     height: TailwindValue,
 }) => (
-    <img className={`tw-w-${width} tw-h-${height}`} src="/icon/etelie.svg" />
+    <div className={`tw-w-${width} tw-h-${height}`}>
+        <img className="tw-w-full tw-h-full" src="/icon/etelie.svg" />
+    </div>
 )
