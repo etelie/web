@@ -1,6 +1,6 @@
 import type { TailwindValue } from '~/types';
 
-export type IconProps = {
+export interface IconProps {
   width: TailwindValue;
   height: TailwindValue;
 };
