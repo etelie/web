@@ -12,7 +12,8 @@
     "test:watch": "vitest watch",
     "test:ui": "vitest watch --ui",
     "coverage": "vitest run --coverage",
-    "storybook": "storybook dev -p 6006 -c .storybook watch-css",
+    "storybook": "storybook dev --ci -p 6006",
+    "storybook:open": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "tailwind:build": "tailwindcss -o build.css --minify"
   },

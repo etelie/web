@@ -14,9 +14,11 @@ export const Modal = ({ hidden }: ModalProps) => (
       aria-hidden={hidden}
       className={clsx(
         't-fixed t-z-50',
+        't-mx-auto',
         hidden && 't-hidden',
         't-overflow-x-hidden t-overflow-y-auto',
-        't-w-64 t-h-64 sm:t-w-80 md:t-w-96 lg:t-w-1/2',
+        't-w-64 t-h-64 sm:t-w-1/2',
+        't-max-w-4xl',
         't-bg-black',
         't-border-black t-border-t-[18px] t-border-x-[6px] t-border-b-[6px] t-rounded-xl',
         'e-shadow-fore',
