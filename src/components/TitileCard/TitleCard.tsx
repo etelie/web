@@ -2,11 +2,15 @@ import clsx from 'clsx';
 
 import { Icon } from '../EtelieIcon';
 
-export type TitleCardProps = {}
+export type TitleCardProps = {
+  hidden?: boolean;
+}
 
-export const TitleCard = ({}: TitleCardProps) => (
+export const TitleCard = ({hidden = false}: TitleCardProps) => (
   <div
     className={clsx(
+      hidden && 't-hidden',
+      't-fixed t-top-4 t-start-4',
       't-flex t-flex-row t-items-center t-flex-nowrap t-gap',
       't-w-64',
       't-text-3xl t-font-sans t-font-semibold',

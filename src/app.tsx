@@ -1,16 +1,20 @@
 import { renderTimestamp } from '@/common/time';
 import { Modal } from '@/components/Modal';
+import { TitleCard } from './components/TitileCard';
 
 function App () {
   const timestamp = renderTimestamp(new Date());
 
   return (
-    <Modal
-      hidden={false}
-      title={'etelie.com is under development'}
-      footerLeft='Please check back in later'
-      footerRight={timestamp}
-    />
+    <>
+      <TitleCard />
+      <Modal
+        hidden={false}
+        title={'etelie.com is under development'}
+        footerLeft='Please check back in later'
+        footerRight={timestamp}
+      />
+    </>
   );
 }
 

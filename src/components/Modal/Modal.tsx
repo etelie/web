@@ -41,8 +41,8 @@ export const Modal = ({
           aria-labeledby={titleId}
           role='dialog'
           className={clsx(
-            't-mx-auto t-my-auto',
             hidden && 't-hidden',
+            't-mx-auto t-my-auto',
             't-overflow-x-hidden t-overflow-y-auto',
             't-w-96 sm:t-w-3/4 lg:t-w-4xl',
             't-max-h-2xl',
