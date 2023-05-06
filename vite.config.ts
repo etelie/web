@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import mkcert from "vite-plugin-mkcert";
 
-const r = (p: string) => path.resolve(__dirname, p);
+const r = path.resolve.bind(this, __dirname);
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -37,7 +37,7 @@ export default defineConfig({
   },
   preview: {
     strictPort: true,
-    port: 3002,
+    port: 3001,
     https: true,
   },
 });

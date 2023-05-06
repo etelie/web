@@ -6,9 +6,9 @@ import { HeadingText } from '../HeadingText';
 import { SubHeadingText } from '../SubHeadingText/SubHeadingText';
 
 export type ModalProps = {
-  hidden: boolean;
   title: string;
-  hideIcon?: boolean;
+  hidden?: boolean;
+  iconHidden?: boolean;
   children?: ReactNode;
   footerLeft?: string;
   footerRight?: string;
@@ -16,9 +16,9 @@ export type ModalProps = {
 
 export const Modal = ({
   children,
-  hidden,
+  hidden = false,
   title,
-  hideIcon = false,
+  iconHidden = false,
   footerLeft,
   footerRight,
 }: ModalProps) => {
@@ -27,17 +27,22 @@ export const Modal = ({
   return (
     <>
       <Overlay hidden={hidden} />
-      <div className={clsx('t-flex t-flex-col t-justify-center', 't-h-screen')}>
+      <div
+        className={clsx(
+          't-flex t-flex-col t-justify-center',
+          't-h-screen',
+          't-fixed t-inset-0',
+          't-z-50',
+        )}
+      >
         <div
           tabIndex={-1}
           aria-hidden={hidden}
           aria-labeledby={titleId}
           role='dialog'
           className={clsx(
-            't-z-50',
-            't-inset-x-0 t-mx-auto',
-            't-my-auto',
             hidden && 't-hidden',
+            't-mx-auto t-my-auto',
             't-overflow-x-hidden t-overflow-y-auto',
             't-w-96 sm:t-w-3/4 lg:t-w-4xl',
             't-max-h-2xl',
@@ -56,12 +61,12 @@ export const Modal = ({
             )}
           >
             <div className={clsx('t-flex t-flex-col t-justify-between', 't-h-full')}>
-              {hideIcon ? null : (
+              {iconHidden ? null : (
                 <div className={clsx('t-mb-7')}>
                   <EtelieIcon size={50} />
                 </div>
               )}
-              <HeadingText id={titleId} className={clsx('t-mb-3')}>
+              <HeadingText id={titleId} className={clsx(iconHidden && 't-mt-3', 't-mb-3')}>
                 {title}
               </HeadingText>
               <div>{children}</div>
@@ -90,10 +95,10 @@ type OverlayProps = {
 const Overlay = ({ hidden }: OverlayProps) => (
   <div
     className={clsx(
-      't-fixed t-z-50',
+      't-fixed t-z-40',
       hidden && 't-hidden',
       't-inset-0',
-      't-bg-slate-100 t-bg-opacity-50',
+      't-bg-slate-100 t-bg-opacity-50 t-backdrop-blur-2xs',
       't-w-screen t-h-screen',
     )}
   />

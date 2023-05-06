@@ -32,6 +32,11 @@ export default {
         '8xl': '96rem',
         '9xl': '112rem',
       },
+      backdropBlur: {
+        '3xs': '1px',
+        '2xs': '1.5px',
+        xs: '2px',
+      },
     },
   },
 };
