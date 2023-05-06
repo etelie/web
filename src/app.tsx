@@ -1,31 +1,17 @@
-import { useState } from "react";
-import etelieLogo from "/icon/etelie.svg";
-import "./app.css";
+import { renderTimestamp } from '@/common/time';
+import { Modal } from '@/components/Modal';
 
-function App() {
-  const [count, setCount] = useState(0);
+function App () {
+  const timestamp = renderTimestamp(new Date());
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://etelie.com" target="_blank" rel="noreferrer">
-          <img src={etelieLogo} className="logo" alt="Etelie logo" />
-        </a>
-      </div>
-      <h1>etelie.com</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/app.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Under maintenance</p>
-    </div>
+    <Modal
+      hidden={false}
+      title={'etelie.com is under development'}
+      footerLeft='Please check back in later'
+      footerRight={`Last attempt: ${timestamp}`}
+    />
   );
 }
-
-export const app_util = () => {
-  return "x";
-};
 
 export default App;

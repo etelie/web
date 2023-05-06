@@ -1,0 +1,1 @@
+export { SubHeadingText } from './SubHeadingText';
