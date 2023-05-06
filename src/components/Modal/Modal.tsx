@@ -27,16 +27,21 @@ export const Modal = ({
   return (
     <>
       <Overlay hidden={hidden} />
-      <div className={clsx('t-flex t-flex-col t-justify-center', 't-h-screen')}>
+      <div
+        className={clsx(
+          't-flex t-flex-col t-justify-center',
+          't-h-screen',
+          't-fixed t-inset-0',
+          't-z-50',
+        )}
+      >
         <div
           tabIndex={-1}
           aria-hidden={hidden}
           aria-labeledby={titleId}
           role='dialog'
           className={clsx(
-            't-z-50',
-            't-inset-x-0 t-mx-auto',
-            't-my-auto',
+            't-mx-auto t-my-auto',
             hidden && 't-hidden',
             't-overflow-x-hidden t-overflow-y-auto',
             't-w-96 sm:t-w-3/4 lg:t-w-4xl',
