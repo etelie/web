@@ -1,20 +1,37 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  // darkMode: 'class',
+  prefix: 't-',
+  plugins: [],
   theme: {
     extend: {
-      colors: {
-        primary: "#FF6363",
-        secondary: {
-          100: "#aaa",
-          200: "#bbb",
-        },
-      },
       fontFamily: {
-        heading: ["Montserrat"],
+        sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        primary: '#ffffff',
+      },
+      spacing: {
+        68: '17rem',
+        112: '28rem',
+        128: '32rem',
+        xl: '36rem',
+        '2xl': '42rem',
+        '3xl': '48rem',
+        '4xl': '56rem',
+        '5xl': '64rem',
+        '6xl': '72rem',
+        '7xl': '80rem',
+        '8xl': '96rem',
+        '9xl': '112rem',
+      },
+      maxWidth: {
+        '8xl': '96rem',
+        '9xl': '112rem',
       },
     },
   },
-  plugins: [],
 };
-
