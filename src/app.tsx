@@ -9,7 +9,7 @@ function App () {
       hidden={false}
       title={'etelie.com is under development'}
       footerLeft='Please check back in later'
-      footerRight={`Last attempt: ${timestamp}`}
+      footerRight={timestamp}
     />
   );
 }
