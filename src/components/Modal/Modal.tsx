@@ -16,11 +16,11 @@ export type ModalProps = {
 
 export const Modal = ({
   children,
-  hidden = false,
   title,
-  iconHidden = false,
   footerLeft,
   footerRight,
+  hidden = false,
+  iconHidden = false,
 }: ModalProps) => {
   const titleId = useId();
 
@@ -71,7 +71,11 @@ export const Modal = ({
               </HeadingText>
               <div>{children}</div>
               <footer
-                className={clsx('t-flex t-flex-row t-justify-between', 't-mt-3', 't-space-x-3')}
+                className={clsx(
+                  't-flex t-flex-col sm:t-flex-row t-justify-between',
+                  't-mt-3',
+                  't-space-y-1 sm:t-space-y-0 sm:t-space-x-3',
+                )}
               >
                 <SubHeadingText className={clsx('t-relative t-start-0')}>
                   {footerLeft}
