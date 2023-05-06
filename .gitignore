@@ -10,10 +10,6 @@
 # testing
 /coverage
 
-# prisma
-/prisma/db.sqlite
-/prisma/db.sqlite-journal
-
 # production
 /build
 
