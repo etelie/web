@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import type { TailwindValue } from '~/types';
+import type { TailwindValue } from '@/types';
 
 export type IconProps = {
   size: TailwindValue;

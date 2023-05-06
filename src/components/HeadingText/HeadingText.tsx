@@ -7,7 +7,7 @@ export type HeadingTextProps = {
 };
 
 export const HeadingText = ({ id, children, className }: HeadingTextProps) => (
-  <h1 id={id} className={clsx(className, 't-font-sans t-text-5xl t-font-semibold')}>
+  <h1 id={id} className={clsx(className, 't-font-sans t-text-4xl t-font-semibold')}>
     {children}
   </h1>
 );
