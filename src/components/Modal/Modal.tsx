@@ -34,12 +34,12 @@ export const Modal = ({
           aria-labeledby={titleId}
           role='dialog'
           className={clsx(
-            't-fixed t-z-50',
+            't-z-50',
             't-inset-x-0 t-mx-auto',
             't-my-auto',
             hidden && 't-hidden',
             't-overflow-x-hidden t-overflow-y-auto',
-            't-w-96 md:t-w-3/4 xl:t-w-5xl',
+            't-w-96 sm:t-w-3/4 lg:t-w-4xl',
             't-max-h-2xl',
             't-bg-black',
             't-border-black t-border-t-[18px] t-border-x-[6px] t-border-b-[6px] t-rounded-xl',
@@ -65,7 +65,9 @@ export const Modal = ({
                 {title}
               </HeadingText>
               <div>{children}</div>
-              <footer className={clsx('t-flex t-flex-row t-justify-between', 't-mt-3')}>
+              <footer
+                className={clsx('t-flex t-flex-row t-justify-between', 't-mt-3', 't-space-x-3')}
+              >
                 <SubHeadingText className={clsx('t-relative t-start-0')}>
                   {footerLeft}
                 </SubHeadingText>
