@@ -46,6 +46,10 @@ The PostgreSQL server is pre-configured for the user "postgres" with password "p
 
 We use the Storybook tool to host a component library which allows us to document our UI components and test them in isolation. To run a local Storybook dev server (with hot-module replacement), use `npm run storybook`. For a stand-alone build of the Storybook web page, use `npm run storybook:build`.
 
+#### 5. Local HTTPS
+
+The web application is served locally over HTTPS using the conveinent Vite "mkcert" which creates a self-signed TLS certificate. The first time you open the local dev app in a web browser, you will have to silence the security warning caused by the certificate being from an unknown issuer.
+
 ### Development notes
 
 #### Environment variables

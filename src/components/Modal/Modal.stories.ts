@@ -17,13 +17,13 @@ export const Base: Story = {
     title: 'etelie.com is under development',
     footerLeft: 'Please check back in later',
     footerRight: 'Last attempt: March 31, 2023 – 17:07 CDT',
-    hideIcon: false,
+    iconHidden: false,
   },
 };
 
 export const NoIcon: Story = {
   args: {
     ...Base.args,
-    hideIcon: true,
+    iconHidden: true,
   },
 };

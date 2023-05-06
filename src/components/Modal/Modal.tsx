@@ -6,9 +6,9 @@ import { HeadingText } from '../HeadingText';
 import { SubHeadingText } from '../SubHeadingText/SubHeadingText';
 
 export type ModalProps = {
-  hidden: boolean;
   title: string;
-  hideIcon?: boolean;
+  hidden?: boolean;
+  iconHidden?: boolean;
   children?: ReactNode;
   footerLeft?: string;
   footerRight?: string;
@@ -16,9 +16,9 @@ export type ModalProps = {
 
 export const Modal = ({
   children,
-  hidden,
+  hidden = false,
   title,
-  hideIcon = false,
+  iconHidden = false,
   footerLeft,
   footerRight,
 }: ModalProps) => {
@@ -61,12 +61,12 @@ export const Modal = ({
             )}
           >
             <div className={clsx('t-flex t-flex-col t-justify-between', 't-h-full')}>
-              {hideIcon ? null : (
+              {iconHidden ? null : (
                 <div className={clsx('t-mb-7')}>
                   <EtelieIcon size={50} />
                 </div>
               )}
-              <HeadingText id={titleId} className={clsx('t-mb-3')}>
+              <HeadingText id={titleId} className={clsx(iconHidden && 't-mt-3', 't-mb-3')}>
                 {title}
               </HeadingText>
               <div>{children}</div>
@@ -98,7 +98,7 @@ const Overlay = ({ hidden }: OverlayProps) => (
       't-fixed t-z-40',
       hidden && 't-hidden',
       't-inset-0',
-      't-bg-slate-100 t-bg-opacity-50',
+      't-bg-slate-100 t-bg-opacity-50 t-backdrop-blur-2xs',
       't-w-screen t-h-screen',
     )}
   />
