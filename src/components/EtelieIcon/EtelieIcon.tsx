@@ -2,16 +2,15 @@ import clsx from 'clsx';
 
 import type { TailwindValue } from '~/types';
 
-export interface IconProps {
-  width: TailwindValue;
-  height: TailwindValue;
-}
+export type IconProps = {
+  size: TailwindValue;
+};
 
-export const EtelieIcon = ({ width, height }: IconProps) => (
+export const EtelieIcon = ({ size }: IconProps) => (
   <img
-    className={clsx(`t-w-${width} t-h-${height}`)}
+    className={clsx(`t-w-${size} t-h-${size}`)}
     src='/icon/etelie.svg'
-    width={width}
-    height={height}
+    width={size}
+    height={size}
   />
 );

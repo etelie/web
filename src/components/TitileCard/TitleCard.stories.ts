@@ -13,4 +13,4 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Idle: Story = {};
+export const Base: Story = {};

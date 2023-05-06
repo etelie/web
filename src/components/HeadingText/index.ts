@@ -1,0 +1,1 @@
+export { HeadingText } from './HeadingText';

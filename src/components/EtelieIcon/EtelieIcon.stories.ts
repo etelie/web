@@ -13,9 +13,8 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const Idle: Story = {
+export const Base: Story = {
   args: {
-    width: 48,
-    height: 48,
+    size: 48,
   },
 };

@@ -2,7 +2,9 @@ import clsx from 'clsx';
 
 import { Icon } from '../EtelieIcon';
 
-export const TitleCard = () => (
+export type TitleCardProps = {}
+
+export const TitleCard = ({}: TitleCardProps) => (
   <div
     className={clsx(
       't-flex t-flex-row t-items-center t-flex-nowrap t-gap',
@@ -13,14 +15,8 @@ export const TitleCard = () => (
       'e-shadow-fore',
     )}
   >
-    <div
-      className={clsx(
-        't-flex-none',
-        't-flex t-items-center t-justify-center',
-        't-w-[70px]',
-      )}
-    >
-      <Icon width='48px' height='48px' />
+    <div className={clsx('t-flex-none', 't-flex t-items-center t-justify-center', 't-w-[70px]')}>
+      <Icon size='48px' />
     </div>
     <div className={clsx('t-bg-black', 't-w-2 t-h-[68px]')} />
     <div className={clsx('t-flex-grow', 't-text-center')}>
