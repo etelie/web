@@ -1,1 +1,0 @@
-export { HeadingText } from './HeadingText';

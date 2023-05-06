@@ -33,6 +33,3 @@ npm-debug.log*
 
 # build
 /dist
-
-# storybook
-/storybook-static
