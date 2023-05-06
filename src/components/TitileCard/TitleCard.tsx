@@ -14,7 +14,7 @@ export const TitleCard = ({hidden = false}: TitleCardProps) => (
       't-flex t-flex-row t-items-center t-flex-nowrap t-gap',
       't-w-64',
       't-text-3xl t-font-sans t-font-semibold',
-      't-z-50',
+      't-z-30',
       't-border-black t-border-[8px] t-rounded-[18px]',
       'e-shadow-fore',
     )}

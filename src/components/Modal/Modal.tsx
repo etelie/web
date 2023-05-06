@@ -95,7 +95,7 @@ type OverlayProps = {
 const Overlay = ({ hidden }: OverlayProps) => (
   <div
     className={clsx(
-      't-fixed t-z-50',
+      't-fixed t-z-40',
       hidden && 't-hidden',
       't-inset-0',
       't-bg-slate-100 t-bg-opacity-50',
