@@ -9,7 +9,8 @@ export type TitleCardProps = {
 export const TitleCard = ({ hidden = false }: TitleCardProps) => (
   <div
     className={clsx(
-      hidden && 't-hidden',
+      't-invisible',
+      !hidden && 'md:t-visible',
       't-fixed t-top-4 t-start-4',
       't-flex t-flex-row t-items-center t-flex-nowrap t-gap',
       't-w-60',
