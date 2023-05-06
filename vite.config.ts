@@ -37,7 +37,7 @@ export default defineConfig({
   },
   preview: {
     strictPort: true,
-    port: 3002,
+    port: 3001,
     https: true,
   },
 });
