@@ -1,3 +1,3 @@
-export type { EtelieIconType, EtelieIconProps } from './EtelieIcon';
-export type { ReloadIconType, ReloadIconProps } from './ReloadIcon';
-export type { BookmarkIconType, BookmarkIconProps } from './BookmarkIcon';
+export type { EtelieIconProps } from './EtelieIcon';
+export type { ReloadIconProps } from './ReloadIcon';
+export type { BookmarkIconProps } from './BookmarkIcon';

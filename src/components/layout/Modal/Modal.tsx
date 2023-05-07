@@ -3,7 +3,7 @@ import { ReactNode, useId } from 'react';
 
 import { BookmarkIcon, EtelieIcon, ReloadIcon } from '@/components/icons';
 import { HeadingText, SubHeadingText } from '@/components/typography';
-import type { BookmarkIconType, ReloadIconType } from '@/components/icons/types';
+import { ModalControl } from './ModalControl';
 
 export type ModalProps = {
   title: string;
@@ -29,6 +29,7 @@ export const Modal = ({
       <Overlay hidden={hidden} />
       <div
         className={clsx(
+          hidden && 't-hidden',
           't-flex t-flex-col t-justify-center',
           't-h-screen',
           't-fixed t-inset-0',
@@ -41,7 +42,7 @@ export const Modal = ({
           aria-labeledby={titleId}
           role='dialog'
           className={clsx(
-            hidden && 't-hidden',
+            't-relative',
             't-mx-auto t-my-auto',
             't-overflow-x-hidden t-overflow-y-auto',
             't-w-96 sm:t-w-3/4 lg:t-w-4xl',
@@ -51,12 +52,20 @@ export const Modal = ({
             'e-shadow-fore',
           )}
         >
+          <ModalControl
+            controls={[
+              <button onClick={() => globalThis.location.reload()}>
+                <ReloadIcon size={23} inverted />
+              </button>,
+              // <BookmarkIcon size={19} />,
+            ]}
+          />
           <div
             className={clsx(
               't-w-[full-6px] t-h-full',
               't-overflow-y-auto t-overflow-x-clip',
               't-bg-white',
-              't-border-black t-rounded-xl',
+              't-border-black t-rounded-xl t-rounded-tr-none',
               't-py-6 t-px-8',
             )}
           >
@@ -77,8 +86,12 @@ export const Modal = ({
                   't-space-y-1 sm:t-space-y-0 sm:t-space-x-3',
                 )}
               >
-                <SubHeadingText className={clsx('t-relative t-start-0')}>{footerLeft}</SubHeadingText>
-                <SubHeadingText className={clsx('t-relative t-end-0')}>{footerRight}</SubHeadingText>
+                <SubHeadingText className={clsx('t-relative t-start-0')}>
+                  {footerLeft}
+                </SubHeadingText>
+                <SubHeadingText className={clsx('t-relative t-end-0')}>
+                  {footerRight}
+                </SubHeadingText>
               </footer>
             </div>
           </div>
@@ -103,9 +116,3 @@ const Overlay = ({ hidden }: OverlayProps) => (
     )}
   />
 );
-
-type ModalControlProps = {
-  icon: BookmarkIconType | ReloadIconType
-};
-
-const ModalControl = ({}: ModalControlProps) => {};

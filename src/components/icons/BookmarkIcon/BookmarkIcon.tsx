@@ -2,7 +2,6 @@ import clsx from 'clsx';
 
 import type { TailwindValue } from '@/types';
 
-export type BookmarkIconType = typeof BookmarkIcon;
 export type BookmarkIconProps = {
   size: TailwindValue;
 };

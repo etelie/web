@@ -2,7 +2,6 @@ import clsx from 'clsx';
 
 import type { TailwindValue } from '@/types';
 
-export type EtelieIconType = typeof EtelieIcon;
 export type EtelieIconProps = {
   size: TailwindValue;
 };
