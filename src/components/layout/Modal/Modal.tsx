@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { ReactNode, useId } from 'react';
 
-import { Bookmark, Etelie, Reload } from '@/components/icons';
-import { Heading, SubHeading } from '@/components/typography';
+import { BookmarkIcon, EtelieIcon, ReloadIcon } from '@/components/icons';
+import { HeadingText, SubHeadingText } from '@/components/typography';
+import type { BookmarkIconType, ReloadIconType } from '@/components/icons/types';
 
 export type ModalProps = {
   title: string;
@@ -62,12 +63,12 @@ export const Modal = ({
             <div className={clsx('t-flex t-flex-col t-justify-between', 't-h-full')}>
               {iconHidden ? null : (
                 <div className={clsx('t-mb-7')}>
-                  <Etelie size={50} />
+                  <EtelieIcon size={50} />
                 </div>
               )}
-              <Heading id={titleId} className={clsx(iconHidden && 't-mt-3', 't-mb-3')}>
+              <HeadingText id={titleId} className={clsx(iconHidden && 't-mt-3', 't-mb-3')}>
                 {title}
-              </Heading>
+              </HeadingText>
               <div>{children}</div>
               <footer
                 className={clsx(
@@ -76,12 +77,8 @@ export const Modal = ({
                   't-space-y-1 sm:t-space-y-0 sm:t-space-x-3',
                 )}
               >
-                <SubHeading className={clsx('t-relative t-start-0')}>
-                  {footerLeft}
-                </SubHeading>
-                <SubHeading className={clsx('t-relative t-end-0')}>
-                  {footerRight}
-                </SubHeading>
+                <SubHeadingText className={clsx('t-relative t-start-0')}>{footerLeft}</SubHeadingText>
+                <SubHeadingText className={clsx('t-relative t-end-0')}>{footerRight}</SubHeadingText>
               </footer>
             </div>
           </div>
@@ -108,7 +105,7 @@ const Overlay = ({ hidden }: OverlayProps) => (
 );
 
 type ModalControlProps = {
-  icon: typeof Bookmark | typeof Reload;
+  icon: BookmarkIconType | ReloadIconType
 };
 
 const ModalControl = ({}: ModalControlProps) => {};
