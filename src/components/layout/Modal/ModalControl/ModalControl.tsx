@@ -10,6 +10,8 @@ export type ModalControlProps = {
   controls: Array<ReactNode>;
 };
 
+// TODO: Control types enum (e.g. reload, exit) rather than controls array
+
 export const ModalControl = ({ controls }: ModalControlProps) => {
   const n = controls.length;
   const width = LEFT_CAP_WIDTH + n * (MODAL_BUTTON_WDITH + SEPARATOR_WIDTH);

@@ -7,6 +7,7 @@ import { ModalControl } from './ModalControl';
 
 export type ModalProps = {
   title: string;
+  controls?: Array<ReactNode>;
   hidden?: boolean;
   iconHidden?: boolean;
   children?: ReactNode;
@@ -19,6 +20,7 @@ export const Modal = ({
   title,
   footerLeft,
   footerRight,
+  controls = [],
   hidden = false,
   iconHidden = false,
 }: ModalProps) => {
@@ -52,14 +54,7 @@ export const Modal = ({
             'e-shadow-fore',
           )}
         >
-          <ModalControl
-            controls={[
-              <button onClick={() => globalThis.location.reload()}>
-                <ReloadIcon size={23} inverted />
-              </button>,
-              // <BookmarkIcon size={19} />,
-            ]}
-          />
+          <ModalControl controls={controls} />
           <div
             className={clsx(
               't-w-[full-6px] t-h-full',
