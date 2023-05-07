@@ -1,9 +1,8 @@
 import clsx from 'clsx';
 import { ReactNode, useId } from 'react';
 
-import { EtelieIcon } from '../EtelieIcon/EtelieIcon';
-import { HeadingText } from '../HeadingText';
-import { SubHeadingText } from '../SubHeadingText/SubHeadingText';
+import { Etelie } from '@/components/icons';
+import { Heading, SubHeading } from '@/components/typography';
 
 export type ModalProps = {
   title: string;
@@ -63,12 +62,12 @@ export const Modal = ({
             <div className={clsx('t-flex t-flex-col t-justify-between', 't-h-full')}>
               {iconHidden ? null : (
                 <div className={clsx('t-mb-7')}>
-                  <EtelieIcon size={50} />
+                  <Etelie size={50} />
                 </div>
               )}
-              <HeadingText id={titleId} className={clsx(iconHidden && 't-mt-3', 't-mb-3')}>
+              <Heading id={titleId} className={clsx(iconHidden && 't-mt-3', 't-mb-3')}>
                 {title}
-              </HeadingText>
+              </Heading>
               <div>{children}</div>
               <footer
                 className={clsx(
@@ -77,12 +76,12 @@ export const Modal = ({
                   't-space-y-1 sm:t-space-y-0 sm:t-space-x-3',
                 )}
               >
-                <SubHeadingText className={clsx('t-relative t-start-0')}>
+                <SubHeading className={clsx('t-relative t-start-0')}>
                   {footerLeft}
-                </SubHeadingText>
-                <SubHeadingText className={clsx('t-relative t-end-0')}>
+                </SubHeading>
+                <SubHeading className={clsx('t-relative t-end-0')}>
                   {footerRight}
-                </SubHeadingText>
+                </SubHeading>
               </footer>
             </div>
           </div>
@@ -107,3 +106,9 @@ const Overlay = ({ hidden }: OverlayProps) => (
     )}
   />
 );
+
+type ModalControlProps = {
+  icon: Icon;
+};
+
+const ModalControl = ({}: ModalControlProps) => {};

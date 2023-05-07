@@ -1,6 +1,6 @@
 import { renderTimestamp } from '@/common/time';
-import { Modal } from '@/components/Modal';
-import { TitleCard } from './components/TitileCard';
+
+import { Modal, TitleCard } from './components/layout';
 
 function App () {
   const timestamp = renderTimestamp(new Date());

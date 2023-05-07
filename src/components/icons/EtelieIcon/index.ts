@@ -1,0 +1,1 @@
+export { EtelieIcon } from './EtelieIcon';
