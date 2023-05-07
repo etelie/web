@@ -1,3 +1,3 @@
-export type { ReloadIconType, ReloadIconProps } from './ReloadIcon';
+export type { ReloadIconProps } from './ReloadIcon';
 
 export { ReloadIcon } from './ReloadIcon';
