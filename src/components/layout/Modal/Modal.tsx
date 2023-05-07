@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { ReactNode, useId } from 'react';
 
-import { Etelie } from '@/components/icons';
+import { Bookmark, Etelie, Reload } from '@/components/icons';
 import { Heading, SubHeading } from '@/components/typography';
 
 export type ModalProps = {
@@ -108,7 +108,7 @@ const Overlay = ({ hidden }: OverlayProps) => (
 );
 
 type ModalControlProps = {
-  icon: Icon;
+  icon: typeof Bookmark | typeof Reload;
 };
 
 const ModalControl = ({}: ModalControlProps) => {};

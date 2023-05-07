@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { Icon } from '../../icons/EtelieIcon';
+import { Etelie } from '@/components/icons';
 
 export type TitleCardProps = {
   hidden?: boolean;
@@ -21,7 +21,7 @@ export const TitleCard = ({ hidden = false }: TitleCardProps) => (
     )}
   >
     <div className={clsx('t-flex-none', 't-flex t-items-center t-justify-center', 't-w-[62px]')}>
-      <Icon size='40px' />
+      <Etelie size='40px' />
     </div>
     <div className={clsx('t-bg-black', 't-w-[7px] t-h-[60px]')} />
     <div className={clsx('t-flex-grow')}>
