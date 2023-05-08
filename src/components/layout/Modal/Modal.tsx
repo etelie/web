@@ -1,12 +1,14 @@
 import clsx from 'clsx';
 import { ReactNode, useId } from 'react';
 
-import { EtelieIcon } from '../EtelieIcon/EtelieIcon';
-import { HeadingText } from '../HeadingText';
-import { SubHeadingText } from '../SubHeadingText/SubHeadingText';
+import { BookmarkIcon, EtelieIcon, ReloadIcon } from '@/components/icons';
+import { HeadingText, SubHeadingText } from '@/components/typography';
+import { ModalControl, ModalControlOptions } from './ModalControl';
 
 export type ModalProps = {
   title: string;
+  controls?: Array<ReactNode>;
+  control?: ModalControlOptions;
   hidden?: boolean;
   iconHidden?: boolean;
   children?: ReactNode;
@@ -19,6 +21,7 @@ export const Modal = ({
   title,
   footerLeft,
   footerRight,
+  control,
   hidden = false,
   iconHidden = false,
 }: ModalProps) => {
@@ -29,6 +32,7 @@ export const Modal = ({
       <Overlay hidden={hidden} />
       <div
         className={clsx(
+          hidden && 't-hidden',
           't-flex t-flex-col t-justify-center',
           't-h-screen',
           't-fixed t-inset-0',
@@ -41,7 +45,7 @@ export const Modal = ({
           aria-labeledby={titleId}
           role='dialog'
           className={clsx(
-            hidden && 't-hidden',
+            't-relative',
             't-mx-auto t-my-auto',
             't-overflow-x-hidden t-overflow-y-auto',
             't-w-96 sm:t-w-3/4 lg:t-w-4xl',
@@ -51,12 +55,13 @@ export const Modal = ({
             'e-shadow-fore',
           )}
         >
+          {control !== undefined && <ModalControl control={control} />}
           <div
             className={clsx(
               't-w-[full-6px] t-h-full',
               't-overflow-y-auto t-overflow-x-clip',
               't-bg-white',
-              't-border-black t-rounded-xl',
+              't-border-black t-rounded-xl t-rounded-tr-none',
               't-py-6 t-px-8',
             )}
           >
