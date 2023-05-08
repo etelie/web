@@ -1,8 +1,10 @@
 import { renderTimestamp } from '@/common/time';
-import { Modal } from '@/components/Modal';
-import { TitleCard } from './components/TitileCard';
+import { ReloadIcon } from './components/icons';
 
-function App () {
+import { Modal, TitleCard } from './components/layout';
+import { ModalControlOptions } from './components/layout/Modal/ModalControl';
+
+export default () => {
   const timestamp = renderTimestamp(new Date());
 
   return (
@@ -10,12 +12,11 @@ function App () {
       <TitleCard />
       <Modal
         hidden={false}
+        control={ModalControlOptions.RELOAD}
         title={'etelie.com is under development'}
         footerLeft='Please check back in later'
         footerRight={timestamp}
       />
     </>
   );
-}
-
-export default App;
+};

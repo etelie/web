@@ -1,18 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { SubHeadingText } from './SubHeadingText';
+import { HeadingText } from './HeadingText';
 
 const meta = {
-  title: 'SubHeadingText',
-  component: SubHeadingText,
+  title: 'typography/HeadingText',
+  component: HeadingText,
   parameters: {},
-} satisfies Meta<typeof SubHeadingText>;
+} satisfies Meta<typeof HeadingText>;
 type Story = StoryObj<typeof meta>;
 
 export default meta;
 
 export const Base: Story = {
   args: {
-    children: 'SubHeadingText',
+    children: 'HeadingText',
   },
 };

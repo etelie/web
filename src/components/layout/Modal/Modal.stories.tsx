@@ -1,9 +1,10 @@
+import { BookmarkIcon, ReloadIcon } from '@/components/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Modal } from './Modal';
 
 const meta = {
-  title: 'Modal',
+  title: 'layout/Modal',
   component: Modal,
   parameters: {},
 } satisfies Meta<typeof Modal>;
@@ -18,6 +19,18 @@ export const Base: Story = {
     footerLeft: 'Please check back in later',
     footerRight: 'Last attempt: March 31, 2023 – 17:07 CDT',
     iconHidden: false,
+  },
+};
+
+export const WithControls: Story = {
+  args: {
+    ...Base.args,
+    controls: [
+      <button onClick={() => globalThis.location.reload()}>
+        <ReloadIcon size={23} inverted />
+      </button>,
+      <BookmarkIcon size={19} inverted />,
+    ],
   },
 };
 
