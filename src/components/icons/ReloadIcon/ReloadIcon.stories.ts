@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ReloadIcon } from './ReloadIcon';
+import { IconBlackBackground } from '@/stories/decorators';
 
 const meta = {
   title: 'icons/ReloadIcon',
@@ -17,4 +18,12 @@ export const Base: Story = {
   args: {
     size: 48,
   },
+};
+
+export const Inverted: Story = {
+  args: {
+    ...Base.args,
+    inverted: true,
+  },
+  decorators: [IconBlackBackground],
 };

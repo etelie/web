@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { ReactNode } from 'react';
 
-import { ReloadIcon } from '@/components/icons';
+import { CloseIcon, ReloadIcon } from '@/components/icons';
 
 const MODAL_BUTTON_WDITH = 39;
 const SEPARATOR_WIDTH = 8;
@@ -10,6 +10,7 @@ const LEFT_CAP_WIDTH = 4;
 
 export enum ModalControlOptions {
   RELOAD,
+  EXIT,
 }
 
 /**
@@ -23,6 +24,12 @@ const getModalControllers = (control: ModalControlOptions): Array<ReactNode> => 
           <ReloadIcon size={27} inverted />
         </button>,
       ];
+    case ModalControlOptions.EXIT:
+      return [
+        <button onClick={() => {}}>
+          <CloseIcon size={27} inverted />
+        </button>
+      ]
   }
 };
 

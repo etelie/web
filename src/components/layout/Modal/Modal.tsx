@@ -7,7 +7,6 @@ import { ModalControl, ModalControlOptions } from './ModalControl';
 
 export type ModalProps = {
   title: string;
-  controls?: Array<ReactNode>;
   control?: ModalControlOptions;
   hidden?: boolean;
   iconHidden?: boolean;
