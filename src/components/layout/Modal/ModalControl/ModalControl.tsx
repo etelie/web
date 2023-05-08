@@ -10,7 +10,7 @@ const LEFT_CAP_WIDTH = 4;
 
 export enum ModalControlOptions {
   RELOAD,
-  EXIT,
+  CLOSE,
 }
 
 /**
@@ -24,12 +24,12 @@ const getModalControllers = (control: ModalControlOptions): Array<ReactNode> => 
           <ReloadIcon size={27} inverted />
         </button>,
       ];
-    case ModalControlOptions.EXIT:
+    case ModalControlOptions.CLOSE:
       return [
         <button onClick={() => {}}>
           <CloseIcon size={27} inverted />
-        </button>
-      ]
+        </button>,
+      ];
   }
 };
 

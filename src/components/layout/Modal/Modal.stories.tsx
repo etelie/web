@@ -29,10 +29,10 @@ export const Reload: Story = {
   },
 };
 
-export const Exit: Story = {
+export const Close: Story = {
   args: {
     ...Base.args,
-    control: ModalControlOptions.EXIT,
+    control: ModalControlOptions.CLOSE,
   },
 };
 
