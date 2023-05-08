@@ -1,5 +1,4 @@
 import { renderTimestamp } from '@/common/time';
-import { ReloadIcon } from './components/icons';
 
 import { Modal, TitleCard } from './components/layout';
 import { ModalControlOptions } from './components/layout/Modal/ModalControl';
