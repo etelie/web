@@ -3,7 +3,7 @@ import { ReloadIcon } from './components/icons';
 
 import { Modal, TitleCard } from './components/layout';
 
-function App () {
+export default () => {
   const timestamp = renderTimestamp(new Date());
 
   return (
@@ -13,7 +13,7 @@ function App () {
         hidden={false}
         controls={[
           <button onClick={() => globalThis.location.reload()}>
-            <ReloadIcon size={23} inverted />
+            <ReloadIcon size={27} inverted />
           </button>,
         ]}
         title={'etelie.com is under development'}
@@ -23,5 +23,3 @@ function App () {
     </>
   );
 }
-
-export default App;

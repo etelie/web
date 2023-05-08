@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { ReactNode } from 'react';
 
-const MODAL_BUTTON_WDITH = 35;
+const MODAL_BUTTON_WDITH = 39;
 const SEPARATOR_WIDTH = 8;
 const LEFT_CAP_WIDTH = 4;
 
@@ -46,7 +46,7 @@ const ModalControlItem = ({ index, children }: ModalControlItemProps) => {
         't-top-[-1px]', // 1px render clip compensation
         't-right-[8px]',
         't-bg-black',
-        't-h-[31px]', // 1px render clip compensation
+        't-h-[35px]', // 1px render clip compensation
         't-rounded-b-[5px]',
         't-flex t-flex-row',
         't-justify-center t-content-center',
@@ -68,14 +68,14 @@ const RightSeparator = ({ index }: RightSeparatorProps) => {
   return (
     <div style={{ right, width }} className={clsx('t-absolute', 't-top-0', 't-h-[4px]')}>
       <div
-        style={{ width: width + 1 }} // 1px render clip compensation
-        className={clsx('t-absolute', 't-top-0', 't-bg-black', 't-h-[4px]')}
+        style={{ width: width + 2 }} // 2 1px render clip compensation (right + left)
+        className={clsx('t-absolute', 't-top-0 t-right-[-1px]', 't-bg-black', 't-h-[4px]')}
       ></div>
       <div
         style={{ width }}
         className={clsx(
           't-absolute',
-          't-top-0',
+          't-top-0 t-right-0',
           't-bg-white',
           't-h-[5px]', // 1px render clip compensation
           't-rounded-t-[4px]',
