@@ -12,8 +12,14 @@ type Story = StoryObj<typeof meta>;
 
 export default meta;
 
-export const One: Story = {
+export const Reload: Story = {
   args: {
     control: ModalControlOptions.RELOAD,
+  },
+};
+
+export const Close: Story = {
+  args: {
+    control: ModalControlOptions.CLOSE,
   },
 };

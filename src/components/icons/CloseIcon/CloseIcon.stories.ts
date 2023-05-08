@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { BookmarkIcon } from './BookmarkIcon';
-import { IconBlackBackgroundWithMargin } from '@/stories/decorators';
+import { CloseIcon } from './CloseIcon';
+import { IconBlackBackground } from '@/stories/decorators';
 
 const meta = {
-  title: 'icons/BookmarkIcon',
-  component: BookmarkIcon,
+  title: 'icons/CloseIcon',
+  component: CloseIcon,
   parameters: {
     layout: 'centered',
   },
-} satisfies Meta<typeof BookmarkIcon>;
+} satisfies Meta<typeof CloseIcon>;
 type Story = StoryObj<typeof meta>;
 
 export default meta;
@@ -23,8 +23,7 @@ export const Base: Story = {
 export const Inverted: Story = {
   args: {
     ...Base.args,
-    size: 30,
     inverted: true,
   },
-  decorators: [IconBlackBackgroundWithMargin(16)],
+  decorators: [IconBlackBackground],
 };

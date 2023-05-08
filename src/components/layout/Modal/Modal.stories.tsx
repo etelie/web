@@ -1,4 +1,3 @@
-import { BookmarkIcon, ReloadIcon } from '@/components/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Modal } from './Modal';
@@ -26,7 +25,14 @@ export const Base: Story = {
 export const Reload: Story = {
   args: {
     ...Base.args,
-    control: ModalControlOptions.RELOAD
+    control: ModalControlOptions.RELOAD,
+  },
+};
+
+export const Close: Story = {
+  args: {
+    ...Base.args,
+    control: ModalControlOptions.CLOSE,
   },
 };
 
