@@ -2,26 +2,47 @@ import clsx from 'clsx';
 import React from 'react';
 import { ReactNode } from 'react';
 
+import { ReloadIcon } from '@/components/icons';
+
 const MODAL_BUTTON_WDITH = 39;
 const SEPARATOR_WIDTH = 8;
 const LEFT_CAP_WIDTH = 4;
 
+export enum ModalControlOptions {
+  RELOAD,
+}
+
+/**
+ * Get the list of modal controllers for a given control option
+ */
+const getModalControllers = (control: ModalControlOptions): Array<ReactNode> => {
+  switch (control) {
+    case ModalControlOptions.RELOAD:
+      return [
+        <button onClick={() => globalThis.location.reload()}>
+          <ReloadIcon size={27} inverted />
+        </button>,
+      ];
+  }
+};
+
 export type ModalControlProps = {
-  controls: Array<ReactNode>;
+  control: ModalControlOptions;
 };
 
 // TODO: Control types enum (e.g. reload, exit) rather than controls array
 
-export const ModalControl = ({ controls }: ModalControlProps) => {
+export const ModalControl = ({ control }: ModalControlProps) => {
+  const controls = getModalControllers(control);
   const n = controls.length;
   const width = LEFT_CAP_WIDTH + n * (MODAL_BUTTON_WDITH + SEPARATOR_WIDTH);
 
   return (
     <>
-      {controls.map((control, index) => (
+      {controls.map((c, index) => (
         <React.Fragment key={index}>
           <RightSeparator index={index} />
-          <ModalControlItem index={index}>{control}</ModalControlItem>
+          <ModalControlItem index={index}>{c}</ModalControlItem>
         </React.Fragment>
       ))}
       <LeftSeparator index={controls.length - 1} />

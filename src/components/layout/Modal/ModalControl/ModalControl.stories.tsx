@@ -1,7 +1,7 @@
 import { BookmarkIcon, ReloadIcon } from '@/components/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ModalControl } from './ModalControl';
+import { ModalControl, ModalControlOptions } from './ModalControl';
 
 const meta = {
   title: 'layout/ModalControl',
@@ -14,21 +14,6 @@ export default meta;
 
 export const One: Story = {
   args: {
-    controls: [
-      <button onClick={() => globalThis.location.reload()}>
-        <ReloadIcon size={23} inverted />
-      </button>,
-    ],
-  },
-};
-
-export const Two: Story = {
-  args: {
-    controls: [
-      <button onClick={() => globalThis.location.reload()}>
-        <ReloadIcon size={23} inverted />
-      </button>,
-      <BookmarkIcon size={19} inverted />,
-    ],
+    control: ModalControlOptions.RELOAD,
   },
 };

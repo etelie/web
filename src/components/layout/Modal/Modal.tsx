@@ -3,11 +3,12 @@ import { ReactNode, useId } from 'react';
 
 import { BookmarkIcon, EtelieIcon, ReloadIcon } from '@/components/icons';
 import { HeadingText, SubHeadingText } from '@/components/typography';
-import { ModalControl } from './ModalControl';
+import { ModalControl, ModalControlOptions } from './ModalControl';
 
 export type ModalProps = {
   title: string;
   controls?: Array<ReactNode>;
+  control?: ModalControlOptions;
   hidden?: boolean;
   iconHidden?: boolean;
   children?: ReactNode;
@@ -20,7 +21,7 @@ export const Modal = ({
   title,
   footerLeft,
   footerRight,
-  controls = [],
+  control,
   hidden = false,
   iconHidden = false,
 }: ModalProps) => {
@@ -54,7 +55,7 @@ export const Modal = ({
             'e-shadow-fore',
           )}
         >
-          <ModalControl controls={controls} />
+          {control !== undefined && <ModalControl control={control} />}
           <div
             className={clsx(
               't-w-[full-6px] t-h-full',
