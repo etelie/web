@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { ReactNode, useId } from 'react';
 
-import { BookmarkIcon, EtelieIcon, ReloadIcon } from '@/components/icons';
+import { EtelieIcon } from '@/components/icons';
 import { HeadingText, SubHeadingText } from '@/components/typography';
 import { ModalControl, ModalControlOptions } from './ModalControl';
 
@@ -61,7 +61,8 @@ export const Modal = ({
               't-w-[full-6px] t-h-full',
               't-overflow-y-auto t-overflow-x-clip',
               't-bg-white',
-              't-border-black t-rounded-xl t-rounded-tr-none',
+              't-border-black t-rounded-xl', 
+              control !== undefined && 't-rounded-tr-none',
               't-py-6 t-px-8',
             )}
           >

@@ -2,6 +2,7 @@ import { BookmarkIcon, ReloadIcon } from '@/components/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Modal } from './Modal';
+import { ModalControlOptions } from './ModalControl';
 
 const meta = {
   title: 'layout/Modal',
@@ -22,15 +23,10 @@ export const Base: Story = {
   },
 };
 
-export const WithControls: Story = {
+export const Reload: Story = {
   args: {
     ...Base.args,
-    controls: [
-      <button onClick={() => globalThis.location.reload()}>
-        <ReloadIcon size={23} inverted />
-      </button>,
-      <BookmarkIcon size={19} inverted />,
-    ],
+    control: ModalControlOptions.RELOAD
   },
 };
 
