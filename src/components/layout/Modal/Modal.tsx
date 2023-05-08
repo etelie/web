@@ -13,6 +13,7 @@ export type ModalProps = {
   children?: ReactNode;
   footerLeft?: string;
   footerRight?: string;
+  closeCallback?: VoidFunction;
 };
 
 export const Modal = ({
@@ -23,6 +24,7 @@ export const Modal = ({
   control,
   hidden = false,
   iconHidden = false,
+  closeCallback = () => {},
 }: ModalProps) => {
   const titleId = useId();
 
@@ -54,13 +56,23 @@ export const Modal = ({
             'e-shadow-fore',
           )}
         >
-          {control !== undefined && <ModalControl control={control} />}
+          {control !== undefined && (
+            <ModalControl
+              control={control}
+              callback={action => {
+                switch (action) {
+                  case ModalControlOptions.CLOSE:
+                    closeCallback();
+                }
+              }}
+            />
+          )}
           <div
             className={clsx(
               't-w-[full-6px] t-h-full',
               't-overflow-y-auto t-overflow-x-clip',
               't-bg-white',
-              't-border-black t-rounded-xl', 
+              't-border-black t-rounded-xl',
               control !== undefined && 't-rounded-tr-none',
               't-py-6 t-px-8',
             )}

@@ -13,10 +13,15 @@ export enum ModalControlOptions {
   CLOSE,
 }
 
+export type ModalControlCallback = (action: ModalControlOptions) => void;
+
 /**
  * Get the list of modal controllers for a given control option
  */
-const getModalControllers = (control: ModalControlOptions): Array<ReactNode> => {
+const getModalControllers = (
+  control: ModalControlOptions,
+  callback: ModalControlCallback,
+): Array<ReactNode> => {
   switch (control) {
     case ModalControlOptions.RELOAD:
       return [
@@ -26,7 +31,7 @@ const getModalControllers = (control: ModalControlOptions): Array<ReactNode> => 
       ];
     case ModalControlOptions.CLOSE:
       return [
-        <button onClick={() => {}}>
+        <button onClick={callback.bind(this, ModalControlOptions.CLOSE)}>
           <CloseIcon size={27} inverted />
         </button>,
       ];
@@ -35,14 +40,11 @@ const getModalControllers = (control: ModalControlOptions): Array<ReactNode> => 
 
 export type ModalControlProps = {
   control: ModalControlOptions;
+  callback: ModalControlCallback;
 };
 
-// TODO: Control types enum (e.g. reload, exit) rather than controls array
-
-export const ModalControl = ({ control }: ModalControlProps) => {
-  const controls = getModalControllers(control);
-  const n = controls.length;
-  const width = LEFT_CAP_WIDTH + n * (MODAL_BUTTON_WDITH + SEPARATOR_WIDTH);
+export const ModalControl = ({ control, callback }: ModalControlProps) => {
+  const controls: Array<ReactNode> = getModalControllers(control, callback);
 
   return (
     <>
