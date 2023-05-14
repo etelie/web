@@ -32,3 +32,6 @@ npm-debug.log*
 
 # storybook
 /storybook-static
+
+# temporary files
+**/*.tmp

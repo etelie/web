@@ -14,6 +14,7 @@ export default defineConfig({
   clearScreen: false,
   logLevel: "info",
   plugins: [react(), mkcert()],
+  appType: "spa",
   resolve: {
     extensions: [".js", ".ts", ".jsx", ".tsx", ".mjs", ".mts", ".json"],
     alias: {
