@@ -20,7 +20,7 @@ export type ModalControlCallback = (action: ModalControlOptions) => void;
  */
 const getModalControllers = (
   control: ModalControlOptions,
-  callback: ModalControlCallback,
+  callback?: ModalControlCallback,
 ): Array<ReactNode> => {
   switch (control) {
     case ModalControlOptions.RELOAD:
@@ -31,7 +31,7 @@ const getModalControllers = (
       ];
     case ModalControlOptions.CLOSE:
       return [
-        <button onClick={callback.bind(this, ModalControlOptions.CLOSE)}>
+        <button onClick={callback?.bind(this, ModalControlOptions.CLOSE)}>
           <CloseIcon size={27} inverted />
         </button>,
       ];
@@ -40,7 +40,7 @@ const getModalControllers = (
 
 export type ModalControlProps = {
   control: ModalControlOptions;
-  callback: ModalControlCallback;
+  callback?: ModalControlCallback;
 };
 
 export const ModalControl = ({ control, callback }: ModalControlProps) => {
