@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 
 import { CloseIcon, ReloadIcon } from '@/components/icons';
 
-const MODAL_BUTTON_WDITH = 39;
+const MODAL_BUTTON_WIDTH = 39;
 const SEPARATOR_WIDTH = 8;
 const LEFT_CAP_WIDTH = 4;
 
@@ -65,8 +65,8 @@ type ModalControlItemProps = {
 };
 
 const ModalControlItem = ({ index, children }: ModalControlItemProps) => {
-  const width = MODAL_BUTTON_WDITH;
-  const right = SEPARATOR_WIDTH + index * (SEPARATOR_WIDTH + MODAL_BUTTON_WDITH);
+  const width = MODAL_BUTTON_WIDTH;
+  const right = SEPARATOR_WIDTH + index * (SEPARATOR_WIDTH + MODAL_BUTTON_WIDTH);
 
   return (
     <div
@@ -93,7 +93,7 @@ type RightSeparatorProps = {
 
 const RightSeparator = ({ index }: RightSeparatorProps) => {
   const width = SEPARATOR_WIDTH;
-  const right = index * (SEPARATOR_WIDTH + MODAL_BUTTON_WDITH);
+  const right = index * (SEPARATOR_WIDTH + MODAL_BUTTON_WIDTH);
 
   return (
     <div style={{ right, width }} className={clsx('t-absolute', 't-top-0', 't-h-[4px]')}>
@@ -123,7 +123,7 @@ type LeftSeparatorProps = {
 
 const LeftSeparator = ({ index, continuing = false }: LeftSeparatorProps) => {
   const width = continuing ? SEPARATOR_WIDTH : LEFT_CAP_WIDTH;
-  const right = (index + 1) * (MODAL_BUTTON_WDITH + SEPARATOR_WIDTH); // 1px render clip compensation
+  const right = (index + 1) * (MODAL_BUTTON_WIDTH + SEPARATOR_WIDTH); // 1px render clip compensation
 
   return (
     <div style={{ right, width }} className={clsx('t-absolute', 't-top-0', 't-h-[4px]')}>
