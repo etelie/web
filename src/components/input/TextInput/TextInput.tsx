@@ -1,18 +1,21 @@
 import { ReloadIcon } from '@/components/icons';
 import clsx from 'clsx';
-import { FormEvent, FormEventHandler, ReactNode } from 'react';
+import { FormEvent, FormEventHandler, ReactNode, useState } from 'react';
 
 const Input = ({ direction, ...options }: TextInputProps) => {
+  const [focused, setFocused] = useState(false);
+
   return (
     <input
       {...options}
+      onFocus={setFocused.bind(this, true)}
+      onBlur={setFocused.bind(this, false)}
       className={clsx(
         't-w-full',
         direction === directions.rtl && 't-text-right',
-        't-rounded-md',
-        't-border-black t-border-[0px] t-border-l-0',
+        't-border-black t-border-b-2',
         't-py-[.2rem] t-ps-3 t-pe-8',
-        't-bg-slate-100',
+        focused && 't-bg-neutral-50',
         't-text-base',
         't-h-8',
       )}
@@ -35,7 +38,7 @@ const withForm = (node: ReactNode) => {
       {node}
       <div
         onClick={handleSubmit}
-        className={clsx('t-absolute t-top-[7px] t-end-2', 't-cursor-pointer')}
+        className={clsx('t-absolute t-top-[6px] t-end-2', 't-cursor-pointer')}
       >
         <ReloadIcon size={18} inverted className={clsx('t-bg-white', 't-rounded-[10px]')} />
       </div>
@@ -60,6 +63,7 @@ export type TextInputProps = {
   className?: string;
   submittable?: boolean;
   direction?: TextInputDirection;
+  placeholder?: string;
 };
 
 // todo: check 1password autofill for react indirection
