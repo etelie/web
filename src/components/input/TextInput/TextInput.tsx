@@ -1,13 +1,13 @@
 import { ReloadIcon } from '@/components/icons';
 import clsx from 'clsx';
-import { FormEvent, FormEventHandler, ReactEventHandler, ReactNode } from 'react';
+import { FormEvent, FormEventHandler, ReactNode } from 'react';
 
-const Input = ({ className, direction = directions.ltr, ...options }: TextInputProps) => {
+const Input = ({ direction, ...options }: TextInputProps) => {
   return (
     <input
       {...options}
       className={clsx(
-        className,
+        't-w-full',
         direction === directions.rtl && 't-text-right',
         't-rounded-md',
         't-border-black t-border-[0px] t-border-l-0',
@@ -31,7 +31,7 @@ const handleSubmit: FormEventHandler = (event: FormEvent) => {
 
 const withForm = (node: ReactNode) => {
   return (
-    <form onSubmit={handleSubmit} className={clsx('t-w-full', 't-relative')}>
+    <form onSubmit={handleSubmit}>
       {node}
       <div
         onClick={handleSubmit}
@@ -64,7 +64,14 @@ export type TextInputProps = {
 
 // todo: check 1password autofill for react indirection
 //     1password extension appeared using <input type='email'/> before creating TextInput
-export const TextInput = ({ submittable = false, ...options }: TextInputProps) => {
+export const TextInput = ({
+  className,
+  submittable = false,
+  direction = directions.ltr,
+  ...options
+}: TextInputProps) => {
   const input = <Input {...options} />;
-  return submittable ? withForm(input) : input;
+  return (
+    <div className={clsx(className, 't-relative')}>{submittable ? withForm(input) : input}</div>
+  );
 };

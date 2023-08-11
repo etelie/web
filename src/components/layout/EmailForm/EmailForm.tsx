@@ -22,8 +22,8 @@ export const EmailForm = ({}: EmailFormProps) => {
       <SubHeadingText className={clsx('t-w-80', 't-mb-2', 'md:t-w-128', `${v}:t-me-4 ${v}:t-mb-0`)}>
         {l.en.email_request}
       </SubHeadingText>
-      <div className={clsx('t-flex t-flex-row t-justify-start', 't-w-80')}>
-        <TextInput type={types.email} submittable className={clsx('t-w-full')} />
+      <div className={clsx(`t-flex t-flex-row ${v}:t-justify-end`, 't-w-80')}>
+        <TextInput type={types.email} submittable className={clsx('t-w-11/12')} />
       </div>
     </div>
   );
