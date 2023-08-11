@@ -5,11 +5,12 @@ import type { TailwindValue } from '@/types';
 export type BookmarkIconProps = {
   size: TailwindValue;
   inverted?: boolean;
+  className?: string;
 };
 
-export const BookmarkIcon = ({ size, inverted = false }: BookmarkIconProps) => (
+export const BookmarkIcon = ({ className, size, inverted = false }: BookmarkIconProps) => (
   <img
-    className={clsx(`t-w-${size} t-h-${size}`, inverted && 't-invert')}
+    className={clsx(className, `t-w-${size} t-h-${size}`, inverted && 't-invert')}
     src='/icon/bookmark.svg'
     width={size}
     height={size}
