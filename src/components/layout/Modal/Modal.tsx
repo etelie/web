@@ -86,7 +86,7 @@ export const Modal = ({
               <HeadingText id={titleId} className={clsx(iconHidden && 't-mt-3', 't-mb-3')}>
                 {title}
               </HeadingText>
-              <div>{children}</div>
+              <div className={clsx('t-my-1.5')}>{children}</div>
               <footer
                 className={clsx(
                   't-flex t-flex-col sm:t-flex-row t-justify-between',

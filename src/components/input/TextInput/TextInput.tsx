@@ -1,6 +1,6 @@
 import { ReloadIcon } from '@/components/icons';
 import clsx from 'clsx';
-import { ReactNode } from 'react';
+import { ReactEventHandler, ReactNode } from 'react';
 
 const Input = ({ className, type }: TextInputProps) => {
   return (
@@ -10,20 +10,31 @@ const Input = ({ className, type }: TextInputProps) => {
         className,
         't-rounded-md',
         't-border-black t-border-[0px] t-border-l-0',
-        't-px-1.5 t-py-[.2rem]',
-        't-bg-slate-200',
+        't-py-[.2rem] t-ps-3 t-pe-8',
+        't-bg-slate-100',
+        't-text-base',
+        't-h-8'
       )}
     />
   );
 };
 
+const handleSubmit: ReactEventHandler = event => {
+  alert('submitted');
+};
+
+// todo: submit indicator transitions from unfilled green circle (with or without check mark) to filled green circle
+//     stretch: rotation loading animation
+
 const withForm = (node: ReactNode) => {
   return (
-    <form>
+    <form onSubmit={handleSubmit} className={clsx('t-w-full', 't-relative')}>
       {node}
-      <div>
-        <input type='submit' />
-        <ReloadIcon size={18} />
+      <div
+        onClick={handleSubmit}
+        className={clsx('t-absolute t-top-[7px] t-end-2', 't-cursor-pointer')}
+      >
+        <ReloadIcon size={18} inverted className={clsx('t-bg-white', 't-rounded-[10px]')} />
       </div>
     </form>
   );

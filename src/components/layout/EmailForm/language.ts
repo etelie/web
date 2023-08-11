@@ -2,6 +2,6 @@ import { Language } from '@/types';
 
 export default {
   en: {
-    email_request: 'Help us keep you in the loop',
+    email_request: 'Enter an email address to subscribe to development updates:',
   },
 } satisfies Language;
