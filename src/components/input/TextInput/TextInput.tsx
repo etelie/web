@@ -1,26 +1,29 @@
 import { ReloadIcon } from '@/components/icons';
 import clsx from 'clsx';
-import { ReactEventHandler, ReactNode } from 'react';
+import { FormEvent, FormEventHandler, ReactEventHandler, ReactNode } from 'react';
 
-const Input = ({ className, type }: TextInputProps) => {
+const Input = ({ className, direction = directions.ltr, ...options }: TextInputProps) => {
   return (
     <input
-      type={type}
+      {...options}
       className={clsx(
         className,
+        direction === directions.rtl && 't-text-right',
         't-rounded-md',
         't-border-black t-border-[0px] t-border-l-0',
         't-py-[.2rem] t-ps-3 t-pe-8',
         't-bg-slate-100',
         't-text-base',
-        't-h-8'
+        't-h-8',
       )}
     />
   );
 };
 
-const handleSubmit: ReactEventHandler = event => {
-  alert('submitted');
+const handleSubmit: FormEventHandler = (event: FormEvent) => {
+  event.preventDefault();
+  const email: string = event.type;
+  alert(`submitted ${email}`);
 };
 
 // todo: submit indicator transitions from unfilled green circle (with or without check mark) to filled green circle
@@ -46,15 +49,22 @@ export const types = {
 } as const;
 export type TextInputType = (typeof types)[keyof typeof types];
 
+export const directions = {
+  ltr: 'ltr',
+  rtl: 'rtl',
+} as const;
+export type TextInputDirection = (typeof directions)[keyof typeof directions];
+
 export type TextInputProps = {
   type: TextInputType;
   className?: string;
   submittable?: boolean;
+  direction?: TextInputDirection;
 };
 
 // todo: check 1password autofill for react indirection
 //     1password extension appeared using <input type='email'/> before creating TextInput
-export const TextInput = ({ className, type, submittable = false }: TextInputProps) => {
-  const input = <Input className={className} type={type} />;
+export const TextInput = ({ submittable = false, ...options }: TextInputProps) => {
+  const input = <Input {...options} />;
   return submittable ? withForm(input) : input;
 };
