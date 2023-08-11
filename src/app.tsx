@@ -1,6 +1,7 @@
 import { renderTimestamp } from '@/common/time';
 
 import { Modal, TitleCard } from './components/layout';
+import { EmailForm } from './components/layout/EmailForm';
 import { ModalControlOptions } from './components/layout/Modal/ModalControl';
 
 export default () => {
@@ -15,7 +16,9 @@ export default () => {
         title={'etelie.com is under development'}
         footerLeft='Please check back in later'
         footerRight={timestamp}
-      />
+      >
+        <EmailForm />
+      </Modal>
     </>
   );
 };
