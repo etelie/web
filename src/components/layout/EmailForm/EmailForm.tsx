@@ -1,9 +1,10 @@
-import clsx from 'clsx';
-import l from './language';
+import clsx from 'clsx'
 
 import { SubHeadingText } from '@/components/typography';
 import { TextInput } from '@/components/input/TextInput';
 import { types } from '@/components/input/TextInput/TextInput';
+
+import l from './language';
 
 export type EmailFormProps = {};
 

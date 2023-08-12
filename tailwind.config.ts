@@ -3,7 +3,7 @@ import type { Config as TailwindConfig } from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./*.html, ./src/**/*.{js,ts,jsx,tsx}'],
   // darkMode: 'class',
   prefix: 't-',
   plugins: [],
