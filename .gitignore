@@ -35,3 +35,7 @@ npm-debug.log*
 
 # temporary files
 **/*.tmp
+
+# tailwind
+build.css
+
