@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import clsx from 'clsx';
 
 import { CheckCircleIcon } from './CheckCircleIcon';
 
@@ -14,15 +15,9 @@ type Story = StoryObj<typeof meta>;
 export default meta;
 
 export const Outlined: Story = {
-  args: {
-    size: 10,
-    solid: false,
-  },
+  render: () => <CheckCircleIcon className={clsx('t-w-12 t-h-12')} />,
 };
 
 export const Solid: Story = {
-  args: {
-    size: 20,
-    solid: true,
-  },
+  render: () => <CheckCircleIcon solid className={clsx('t-w-12 t-h-12')} />,
 };

@@ -10,20 +10,18 @@ export type EmailFormProps = {};
 
 export const EmailForm = ({}: EmailFormProps) => {
   // todo: get locale from Redux store
-  const v = 'lg'; // Tailwind breakpoint for vertical -> horizontal flex
-
   return (
     <div
       className={clsx(
         't-flex',
         't-flex-col t-items-left t-justify-between',
-        `${v}:t-flex-row ${v}:t-items-center`,
+        `lg:t-flex-row lg:t-items-center`,
       )}
     >
-      <SubHeadingText className={clsx('t-w-80', 't-mb-2', 'md:t-w-128', `${v}:t-me-4 ${v}:t-mb-0`)}>
+      <SubHeadingText className={clsx('t-w-80', 't-mb-2', 'md:t-w-128', `lg:t-me-4 lg:t-mb-0`)}>
         {l.en.email_request}
       </SubHeadingText>
-      <div className={clsx(`t-flex t-flex-row ${v}:t-justify-end`, 't-w-80')}>
+      <div className={clsx(`t-flex t-flex-row lg:t-justify-end`, 't-w-80')}>
         <TextInput type={types.email} placeholder={l.en.email_address} submittable className={clsx('t-w-11/12')} />
       </div>
     </div>
