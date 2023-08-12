@@ -1,8 +1,9 @@
 import { ReloadIcon } from '@/components/icons';
+import { CheckCircleIcon } from '@/components/icons/CheckCircleIcon';
 import clsx from 'clsx';
 import { FormEvent, FormEventHandler, ReactNode, useState } from 'react';
 
-const Input = ({ direction, ...options }: TextInputProps) => {
+const BaseTextInput = ({ direction, ...options }: TextInputProps) => {
   const [focused, setFocused] = useState(false);
 
   return (
@@ -32,15 +33,15 @@ const handleSubmit: FormEventHandler = (event: FormEvent) => {
 // todo: submit indicator transitions from unfilled green circle (with or without check mark) to filled green circle
 //     stretch: rotation loading animation
 
-const withForm = (node: ReactNode) => {
+const SubmittableTextInput = ({ ...options }: TextInputProps) => {
   return (
     <form onSubmit={handleSubmit}>
-      {node}
+      <BaseTextInput {...options} />
       <div
         onClick={handleSubmit}
         className={clsx('t-absolute t-top-[6px] t-end-2', 't-cursor-pointer')}
       >
-        <ReloadIcon size={18} inverted className={clsx('t-bg-white', 't-rounded-[10px]')} />
+        <CheckCircleIcon solid={false} className={clsx('t-w-[18px] t-h-[18px]')} />
       </div>
     </form>
   );
@@ -74,8 +75,9 @@ export const TextInput = ({
   direction = directions.ltr,
   ...options
 }: TextInputProps) => {
-  const input = <Input {...options} />;
   return (
-    <div className={clsx(className, 't-relative')}>{submittable ? withForm(input) : input}</div>
+    <div className={clsx(className, 't-relative')}>
+      {submittable ? <SubmittableTextInput {...options} /> : <BaseTextInput {...options} />}
+    </div>
   );
 };
