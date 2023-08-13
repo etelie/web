@@ -1,7 +1,7 @@
-import { ReloadIcon } from '@/components/icons';
-import { CheckCircleIcon } from '@/components/icons/CheckCircleIcon';
 import clsx from 'clsx';
-import { FormEvent, FormEventHandler, ReactNode, useState } from 'react';
+import { FormEvent, FormEventHandler, useState } from 'react';
+
+import { HeroIcon } from '@/components/icons/HeroIcon';
 
 const BaseTextInput = ({ direction, ...options }: TextInputProps) => {
   const [focused, setFocused] = useState(false);
@@ -28,20 +28,27 @@ const handleSubmit: FormEventHandler = (event: FormEvent) => {
   event.preventDefault();
   const email: string = event.type;
   alert(`submitted ${email}`);
+  // todo: transition check circle to solid
 };
 
 // todo: submit indicator transitions from unfilled green circle (with or without check mark) to filled green circle
+//     stretch: yellow color or alternate icon for invalid input
+//         problem: don't want to show a check mark
 //     stretch: rotation loading animation
 
 const SubmittableTextInput = ({ ...options }: TextInputProps) => {
+  const [submitted, setSubmitted] = useState(false);
+
+  const check_color = submitted ? 't-text-green-500' : 't-text-black';
+
   return (
     <form onSubmit={handleSubmit}>
       <BaseTextInput {...options} />
       <div
         onClick={handleSubmit}
-        className={clsx('t-absolute t-top-[6px] t-end-2', 't-cursor-pointer')}
+        className={clsx('t-absolute t-top-[4px] t-end-2', 't-cursor-pointer', check_color)}
       >
-        <CheckCircleIcon solid={false} className={clsx('t-w-[18px] t-h-[18px]')} />
+        <HeroIcon icon='CheckCircleIcon' solid={false} className={clsx('t-w-[22px] t-h-[22px]')} />
       </div>
     </form>
   );
