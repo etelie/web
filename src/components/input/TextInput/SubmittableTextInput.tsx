@@ -41,6 +41,7 @@ export type SubmittableTextInputProps = BaseTextInputProps & {
 
 export const SubmittableTextInput = ({
   name,
+  className,
   isValid = _ => true,
   onSubmit,
   onChange,
@@ -74,6 +75,7 @@ export const SubmittableTextInput = ({
         {...options}
         name={name ?? id}
         onChange={text => handleChange(text, isValid, setValid, setSubmitted, onChange)}
+        className={clsx(className, 't-pe-8')} // Normally would require !, but pe is more specific than px
       />
       <div
         onClick={event => {

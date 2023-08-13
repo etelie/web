@@ -22,7 +22,7 @@ export type BaseTextInputProps = {
   onChange?: (text: string) => void;
 };
 
-export const BaseTextInput = ({ direction, onChange, ...options }: BaseTextInputProps) => {
+export const BaseTextInput = ({ direction, className, onChange, ...options }: BaseTextInputProps) => {
   const [focused, setFocused] = useState(false);
 
   return (
@@ -35,16 +35,15 @@ export const BaseTextInput = ({ direction, onChange, ...options }: BaseTextInput
       onFocus={setFocused.bind(this, true)}
       onBlur={setFocused.bind(this, false)}
       className={clsx(
+        className,
         't-w-full',
         direction === directions.rtl && 't-text-right',
         't-border-black t-border-b-2',
-        't-py-[.2rem] t-ps-3 t-pe-8',
+        't-py-[.2rem] t-px-3',
         focused && 't-bg-neutral-50',
         't-text-base',
         't-h-8',
       )}
     />
   );
-
-  // todo: padding end fix: conditional on submittable
 };
