@@ -43,7 +43,6 @@ export const Modal = ({
         <div
           tabIndex={-1}
           aria-hidden={hidden}
-          aria-labeledby={titleId}
           role='dialog'
           className={clsx(
             't-relative',
