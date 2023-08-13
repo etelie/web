@@ -2,8 +2,7 @@ import clsx from 'clsx';
 import z from 'zod';
 
 import { SubHeadingText } from '@/components/typography';
-import { TextInput } from '@/components/input/TextInput';
-import { types } from '@/components/input/TextInput/TextInput';
+import { TextInput, types } from '@/components/input/TextInput';
 
 import l from './language';
 
