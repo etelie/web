@@ -1,14 +1,20 @@
 import clsx from 'clsx';
-import { FormEvent, FormEventHandler, useState } from 'react';
+import { useId, useState } from 'react';
 
-import { HeroIcon } from '@/components/icons/HeroIcon';
+import { HeroIcon, HeroIconProps } from '@/components/icons/HeroIcon';
 
-const BaseTextInput = ({ direction, ...options }: TextInputProps) => {
+// todo: separate into other file
+const BaseTextInput = ({ direction, onChange, ...options }: TextInputProps) => {
   const [focused, setFocused] = useState(false);
 
   return (
     <input
       {...options}
+      onSubmit={undefined}
+      onChange={e => {
+        e.preventDefault();
+        onChange && onChange(e.target.value);
+      }}
       onFocus={setFocused.bind(this, true)}
       onBlur={setFocused.bind(this, false)}
       className={clsx(
@@ -24,11 +30,38 @@ const BaseTextInput = ({ direction, ...options }: TextInputProps) => {
   );
 };
 
-const handleSubmit: FormEventHandler = (event: FormEvent) => {
-  event.preventDefault();
-  const email: string = event.type;
-  alert(`submitted ${email}`);
+const handleSubmit = (
+  text: string,
+  isValid: (text: string) => boolean,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+  onSubmit?: (text: string) => void,
+) => {
+  if (!isValid(text)) {
+    return;
+  }
+
+  setLoading(true);
+
+  console.log(text);
+
+  onSubmit && onSubmit(text);
+
+  setSubmitted(true);
+  setLoading(false);
   // todo: transition check circle to solid
+};
+
+const handleChange = (
+  text: string,
+  isValid: (text: string) => boolean,
+  setValid: React.Dispatch<React.SetStateAction<boolean>>,
+  setSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+  onChange?: (text: string) => void,
+) => {
+  setValid(isValid(text));
+  setSubmitted(false);
+  onChange && onChange(text);
 };
 
 // todo: submit indicator transitions from unfilled green circle (with or without check mark) to filled green circle
@@ -36,19 +69,54 @@ const handleSubmit: FormEventHandler = (event: FormEvent) => {
 //         problem: don't want to show a check mark
 //     stretch: rotation loading animation
 
-const SubmittableTextInput = ({ ...options }: TextInputProps) => {
+// todo: separate into other file
+const SubmittableTextInput = ({
+  name,
+  isValid = _ => true,
+  onSubmit,
+  onChange,
+  ...options
+}: TextInputProps) => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [valid, setValid] = useState(true);
+  const id = useId();
 
   const check_color = submitted ? 't-text-green-500' : 't-text-black';
+  const icon: HeroIconProps['icon'] = submitted
+    ? 'CheckCircleIcon'
+    : loading
+    ? 'EllipsisHorizontalCircleIcon'
+    : valid
+    ? 'PlusCircleIcon'
+    : 'ExclamationCircleIcon';
+  const solid: boolean = submitted;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <BaseTextInput {...options} />
+    <form
+      onSubmit={event => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        const text = data.get(name ?? id) as string;
+        handleSubmit(text, isValid, setLoading, setSubmitted, onSubmit);
+      }}
+    >
+      <BaseTextInput
+        name={name ?? id}
+        onChange={text => handleChange(text, isValid, setValid, setSubmitted, onChange)}
+        {...options}
+      />
       <div
-        onClick={handleSubmit}
+        onClick={event => {
+          event.preventDefault();
+          const div = event.currentTarget as HTMLDivElement;
+          const input = div.previousSibling as HTMLInputElement;
+          const text = input.value;
+          handleSubmit(text, isValid, setLoading, setSubmitted, onSubmit);
+        }}
         className={clsx('t-absolute t-top-[4px] t-end-2', 't-cursor-pointer', check_color)}
       >
-        <HeroIcon icon='CheckCircleIcon' solid={false} className={clsx('t-w-[22px] t-h-[22px]')} />
+        <HeroIcon icon={icon} solid={solid} className={clsx('t-w-[22px] t-h-[22px]')} />
       </div>
     </form>
   );
@@ -68,10 +136,14 @@ export type TextInputDirection = (typeof directions)[keyof typeof directions];
 
 export type TextInputProps = {
   type: TextInputType;
+  name?: string;
   className?: string;
   submittable?: boolean;
   direction?: TextInputDirection;
   placeholder?: string;
+  isValid?: (text: string) => boolean;
+  onChange?: (text: string) => void;
+  onSubmit?: (text: string) => void;
 };
 
 // todo: check 1password autofill for react indirection
@@ -84,7 +156,11 @@ export const TextInput = ({
 }: TextInputProps) => {
   return (
     <div className={clsx(className, 't-relative')}>
-      {submittable ? <SubmittableTextInput {...options} /> : <BaseTextInput {...options} />}
+      {submittable ? (
+        <SubmittableTextInput direction={direction} {...options} />
+      ) : (
+        <BaseTextInput direction={direction} {...options} />
+      )}
     </div>
   );
 };

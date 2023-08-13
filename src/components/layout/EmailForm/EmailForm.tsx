@@ -1,10 +1,16 @@
-import clsx from 'clsx'
+import clsx from 'clsx';
+import z from 'zod'
 
 import { SubHeadingText } from '@/components/typography';
 import { TextInput } from '@/components/input/TextInput';
 import { types } from '@/components/input/TextInput/TextInput';
 
 import l from './language';
+
+const isEmailValid = (text: string) => {
+  const schema = z.string().email();
+  return schema.safeParse(text).success || text === ''
+}
 
 export type EmailFormProps = {};
 
@@ -22,7 +28,14 @@ export const EmailForm = ({}: EmailFormProps) => {
         {l.en.email_request}
       </SubHeadingText>
       <div className={clsx(`t-flex t-flex-row lg:t-justify-end`, 't-w-80')}>
-        <TextInput type={types.email} placeholder={l.en.email_address} submittable className={clsx('t-w-11/12')} />
+        <TextInput
+          name='email_list'
+          type={types.email}
+          placeholder={l.en.email_address}
+          submittable
+          isValid={isEmailValid}
+          className={clsx('t-w-11/12')}
+        />
       </div>
     </div>
   );
