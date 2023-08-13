@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import z from 'zod';
 import { directions, types } from './BaseTextInput';
 
+import { sleep } from '@/common/concurrency';
 import { TextInput } from './TextInput';
 
 const meta = {
@@ -36,6 +37,9 @@ export const Submittable: Story = {
   args: {
     type: types.text,
     submittable: true,
+    onSubmit: async _ => {
+      await sleep(2000);
+    },
   },
 };
 
@@ -46,6 +50,9 @@ export const SubmittableEmail: Story = {
     isValid: text => {
       const schema = z.string().email();
       return schema.safeParse(text).success || text === '';
+    },
+    onSubmit: async _ => {
+      await sleep(2000);
     },
   },
 };

@@ -45,4 +45,6 @@ export const BaseTextInput = ({ direction, onChange, ...options }: BaseTextInput
       )}
     />
   );
+
+  // todo: padding end fix: conditional on submittable
 };

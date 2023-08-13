@@ -1,23 +1,23 @@
 import { HeroIcon, HeroIconProps } from '@/components/icons/HeroIcon';
 import { useId, useState } from 'react';
+import clsx from 'clsx';
 
 import { BaseTextInput } from '@/components/input/TextInput/BaseTextInput';
-import clsx from 'clsx';
-import { BaseTextInputProps } from '../BaseTextInput/BaseTextInput';
+import { BaseTextInputProps } from '@/components/input/TextInput/BaseTextInput';
 
-const handleSubmit = (
+const handleSubmit = async (
   text: string,
   isValid: (text: string) => boolean,
   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
   setSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
-  onSubmit?: (text: string) => void,
+  onSubmit?: (text: string) => Promise<void>,
 ) => {
   if (!isValid(text) || text === '') {
     return;
   }
 
   setLoading(true);
-  onSubmit && onSubmit(text);
+  onSubmit && (await onSubmit(text));
   setSubmitted(true);
   setLoading(false);
 };
@@ -36,7 +36,7 @@ const handleChange = (
 
 export type SubmittableTextInputProps = BaseTextInputProps & {
   isValid?: (text: string) => boolean;
-  onSubmit?: (text: string) => void;
+  onSubmit?: (text: string) => Promise<void>;
 };
 
 export const SubmittableTextInput = ({
