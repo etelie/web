@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import z from 'zod'
+import z from 'zod';
 
 import { SubHeadingText } from '@/components/typography';
 import { TextInput } from '@/components/input/TextInput';
@@ -9,8 +9,8 @@ import l from './language';
 
 const isEmailValid = (text: string) => {
   const schema = z.string().email();
-  return schema.safeParse(text).success || text === ''
-}
+  return schema.safeParse(text).success || text === '';
+};
 
 export type EmailFormProps = {};
 
