@@ -22,7 +22,12 @@ export type BaseTextInputProps = {
   onChange?: (text: string) => void;
 };
 
-export const BaseTextInput = ({ direction, className, onChange, ...options }: BaseTextInputProps) => {
+export const BaseTextInput = ({
+  direction,
+  className,
+  onChange,
+  ...options
+}: BaseTextInputProps) => {
   const [focused, setFocused] = useState(false);
 
   return (

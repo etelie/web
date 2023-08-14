@@ -75,7 +75,7 @@ export const SubmittableTextInput = ({
         {...options}
         name={name ?? id}
         onChange={text => handleChange(text, isValid, setValid, setSubmitted, onChange)}
-        className={clsx(className, 't-pe-8')} // Normally would require !, but pe is more specific than px
+        className={clsx(className, 't-pe-8')} // Normally would require !, but pe is more specific than the internal px
       />
       <div
         onClick={event => {
