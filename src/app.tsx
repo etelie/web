@@ -1,8 +1,8 @@
 import { renderTimestamp } from '@/common/time';
 
-import { Modal, TitleCard } from './components/layout';
-import { EmailForm } from './components/layout/EmailForm';
-import { ModalControlOptions } from './components/layout/Modal/ModalControl';
+import { Modal, TitleCard } from '@/components/layout';
+import { EmailForm } from '@/components/layout/EmailForm';
+import { ModalControlOptions } from '@/components/layout/Modal/ModalControl';
 
 export default () => {
   const timestamp = renderTimestamp(new Date());
@@ -17,7 +17,7 @@ export default () => {
         footerLeft='Please check back in later'
         footerRight={timestamp}
       >
-        <EmailForm />
+        {false && <EmailForm />}
       </Modal>
     </>
   );
