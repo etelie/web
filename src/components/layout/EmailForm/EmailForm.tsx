@@ -4,7 +4,9 @@ import z from 'zod';
 import { SubHeadingText } from '@/components/typography';
 import { TextInput, types } from '@/components/input/TextInput';
 
-import l from './language';
+import { useAppSelector } from '@/store';
+
+import lexicon from './lexicon';
 
 const isEmailValid = (text: string) => {
   const schema = z.string().email();
@@ -14,7 +16,9 @@ const isEmailValid = (text: string) => {
 export type EmailFormProps = {};
 
 export const EmailForm = ({}: EmailFormProps) => {
-  // todo: get locale from Redux store
+  const { language } = useAppSelector(state => state.locale);
+  const str = lexicon[language];
+
   return (
     <div
       className={clsx(
@@ -24,13 +28,13 @@ export const EmailForm = ({}: EmailFormProps) => {
       )}
     >
       <SubHeadingText className={clsx('t-w-80', 't-mb-2', 'md:t-w-128', `lg:t-me-4 lg:t-mb-0`)}>
-        {l.en.email_request}
+        {str.emailRequest}
       </SubHeadingText>
       <div className={clsx(`t-flex t-flex-row lg:t-justify-end`, 't-w-80')}>
         <TextInput
           name='email_list'
           type={types.email}
-          placeholder={l.en.email_address}
+          placeholder={str.emailAddress}
           submittable
           isValid={isEmailValid}
           className={clsx('t-w-11/12')}
