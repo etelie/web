@@ -1,4 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { EmailForm } from '../EmailForm';
+
+import { MockStore } from '@/stories/decorators';
 
 import { Modal } from './Modal';
 import { ModalControlOptions } from './ModalControl';
@@ -47,5 +50,13 @@ export const NoIcon: Story = {
   args: {
     ...Base.args,
     iconHidden: true,
+  },
+};
+
+export const WithEmailForm: Story = {
+  decorators: [MockStore],
+  args: {
+    ...Base.args,
+    children: <EmailForm />,
   },
 };
