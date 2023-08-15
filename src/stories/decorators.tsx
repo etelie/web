@@ -1,5 +1,17 @@
 import { StoryContext, StoryFn, StrictArgs } from '@storybook/react';
 import clsx from 'clsx';
+import { Provider } from 'react-redux';
+
+import store from '@/store';
+
+export const MockStoreWith = () => (Story: StoryFn, context: StoryContext) => {
+  return (
+    <Provider store={store}>
+      <Story />
+    </Provider>
+  );
+};
+export const MockStore = MockStoreWith();
 
 interface IconArgs extends StrictArgs {
   size: number;
