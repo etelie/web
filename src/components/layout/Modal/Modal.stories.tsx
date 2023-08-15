@@ -36,6 +36,13 @@ export const Close: Story = {
   },
 };
 
+export const ReloadAndClose: Story = {
+  args: {
+    ...Base.args,
+    control: ModalControlOptions.RELOAD_AND_CLOSE,
+  },
+};
+
 export const NoIcon: Story = {
   args: {
     ...Base.args,

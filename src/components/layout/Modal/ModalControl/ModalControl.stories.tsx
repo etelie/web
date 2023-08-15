@@ -23,3 +23,9 @@ export const Close: Story = {
     control: ModalControlOptions.CLOSE,
   },
 };
+
+export const ReloadAndClose: Story = {
+  args: {
+    control: ModalControlOptions.RELOAD_AND_CLOSE,
+  },
+};

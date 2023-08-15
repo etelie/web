@@ -11,6 +11,7 @@ const LEFT_CAP_WIDTH = 4;
 export enum ModalControlOptions {
   RELOAD,
   CLOSE,
+  RELOAD_AND_CLOSE,
 }
 
 export type ModalControlCallback = (action: ModalControlOptions) => void;
@@ -34,6 +35,11 @@ const getModalControllers = (
         <button onClick={callback?.bind(this, ModalControlOptions.CLOSE)}>
           <CloseIcon size={27} inverted />
         </button>,
+      ];
+    case ModalControlOptions.RELOAD_AND_CLOSE:
+      return [
+        getModalControllers(ModalControlOptions.RELOAD),
+        getModalControllers(ModalControlOptions.CLOSE),
       ];
   }
 };
