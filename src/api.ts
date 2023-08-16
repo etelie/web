@@ -35,5 +35,3 @@ export type EndpointBuilder = _EndpointBuilder<
   never,
   'api'
 >;
-
-// todo: mutation error response type guard
