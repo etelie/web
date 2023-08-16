@@ -18,7 +18,6 @@ export type EmailFormProps = {};
 
 export const EmailForm = ({}: EmailFormProps) => {
   const [postSubscription, subscriptionResult] = usePostNewsletterSubscriptionMutation();
-  console.log(subscriptionResult);
 
   const { language } = useAppSelector(state => state.locale);
   const str = lexicon[language];
