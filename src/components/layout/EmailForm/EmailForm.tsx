@@ -7,6 +7,7 @@ import { TextInput, types } from '@/components/input/TextInput';
 import { useAppSelector } from '@/store';
 
 import lexicon from './lexicon';
+import { usePostNewsletterSubscriptionMutation } from '@/api';
 
 const isEmailValid = (text: string) => {
   const schema = z.string().email();
@@ -16,6 +17,9 @@ const isEmailValid = (text: string) => {
 export type EmailFormProps = {};
 
 export const EmailForm = ({}: EmailFormProps) => {
+  const [postSubscription, subscriptionResult] = usePostNewsletterSubscriptionMutation();
+  console.log(subscriptionResult);
+
   const { language } = useAppSelector(state => state.locale);
   const str = lexicon[language];
 
@@ -37,7 +41,11 @@ export const EmailForm = ({}: EmailFormProps) => {
           placeholder={str.emailAddress}
           submittable
           isValid={isEmailValid}
+
           className={clsx('t-w-11/12')}
+          onSubmit={async text => {
+            const result = await postSubscription(text);
+          }}
         />
       </div>
     </div>

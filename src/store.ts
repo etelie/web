@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import localeReducer from '@/common/locale/localeSlice';
+import { apiSlice } from '@/api';
 
 const store = configureStore({
   reducer: {
+    [apiSlice.reducerPath]: apiSlice.reducer,
     locale: localeReducer,
   },
-  middleware: getDefaultMiddleware => getDefaultMiddleware(),
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(apiSlice.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

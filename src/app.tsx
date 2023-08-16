@@ -17,7 +17,7 @@ export default () => {
         footerLeft='Please check back in later'
         footerRight={timestamp}
       >
-        {false && <EmailForm />}
+        {true && <EmailForm />}
       </Modal>
     </>
   );

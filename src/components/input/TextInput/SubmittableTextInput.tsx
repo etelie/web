@@ -38,7 +38,7 @@ export type SubmittableTextInputProps = BaseTextInputProps & {
   isValid?: (text: string) => boolean;
   onSubmit?: (text: string) => Promise<void>;
 };
-
+// todo: add isError prop (or use a return value for onSubmit)
 export const SubmittableTextInput = ({
   name,
   className,
