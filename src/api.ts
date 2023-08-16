@@ -30,6 +30,19 @@ export const apiSlice = createApi({
   }),
 });
 
+export const mockApiSlice = createApi({
+  reducerPath: 'api',
+  baseQuery: fetchBaseQuery({
+    baseUrl: '',
+    credentials: 'same-origin',
+    headers: {
+      'content-type': 'application/json',
+    },
+    prepareHeaders: headers => {},
+  }),
+  endpoints: builder => ({}),
+});
+
 export type EndpointBuilder = _EndpointBuilder<
   BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
   never,

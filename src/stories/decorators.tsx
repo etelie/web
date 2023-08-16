@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Provider } from 'react-redux';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 
-import store from '@/store';
+import { mockStore } from '@/store';
 
 export const MockStoreWithStore =
   (store: ToolkitStore) => (Story: StoryFn, context: StoryContext) => {
@@ -13,7 +13,7 @@ export const MockStoreWithStore =
       </Provider>
     );
   };
-export const MockStore = MockStoreWithStore(store);
+export const MockStore = MockStoreWithStore(mockStore);
 
 interface IconArgs extends StrictArgs {
   size: number;

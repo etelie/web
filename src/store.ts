@@ -1,8 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import localeReducer from '@/common/locale/localeSlice';
-import { apiSlice } from '@/api';
+import { apiSlice, mockApiSlice } from '@/api';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +10,14 @@ const store = configureStore({
     locale: localeReducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(apiSlice.middleware),
+});
+
+export const mockStore = configureStore({
+  reducer: {
+    [mockApiSlice.reducerPath]: mockApiSlice.reducer,
+    locale: localeReducer,
+  },
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(mockApiSlice.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
