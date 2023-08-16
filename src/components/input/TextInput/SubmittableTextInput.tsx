@@ -10,7 +10,8 @@ const handleSubmit = async (
   isValid: (text: string) => boolean,
   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
   setSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
-  onSubmit?: (text: string) => Promise<void>,
+  // setSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
+  onSubmit?: (text: string) => Promise<boolean>,
 ) => {
   if (!isValid(text) || text === '') {
     return;
@@ -34,11 +35,40 @@ const handleChange = (
   onChange && onChange(text);
 };
 
+const getIcon = (
+  valid: boolean,
+  loading: boolean,
+  submitted: boolean,
+  successful: boolean,
+): {
+  type: HeroIconProps['icon'];
+  color: string;
+  solid: boolean;
+} => {
+  if (submitted) {
+    return {
+      type: successful ? 'CheckCircleIcon' : 'XCircleIcon',
+      color: successful ? 't-text--green-500' : 't-text-red-500',
+      solid: true,
+    };
+  } else {
+    return {
+      type: loading
+        ? 'EllipsisHorizontalCircleIcon'
+        : valid
+        ? 'PlusCircleIcon'
+        : 'ExclamationCircleIcon',
+      color: 't-text-black',
+      solid: false,
+    };
+  }
+};
+
 export type SubmittableTextInputProps = BaseTextInputProps & {
   isValid?: (text: string) => boolean;
-  onSubmit?: (text: string) => Promise<void>;
+  onSubmit?: (text: string) => Promise<boolean>;
 };
-// todo: add isError prop (or use a return value for onSubmit)
+
 export const SubmittableTextInput = ({
   name,
   className,
@@ -50,17 +80,10 @@ export const SubmittableTextInput = ({
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [valid, setValid] = useState(true);
+  const [successful, setSuccessful] = useState(false);
   const id = useId();
 
-  const check_color = submitted ? 't-text-green-500' : 't-text-black';
-  const icon: HeroIconProps['icon'] = submitted
-    ? 'CheckCircleIcon'
-    : loading
-    ? 'EllipsisHorizontalCircleIcon'
-    : valid
-    ? 'PlusCircleIcon'
-    : 'ExclamationCircleIcon';
-  const solid: boolean = submitted;
+  const { type: icon, color, solid } = getIcon(valid, loading, submitted, successful);
 
   return (
     <form
@@ -85,7 +108,7 @@ export const SubmittableTextInput = ({
           const text = input.value;
           handleSubmit(text, isValid, setLoading, setSubmitted, onSubmit);
         }}
-        className={clsx('t-absolute t-top-[4px] t-end-2', 't-cursor-pointer', check_color)}
+        className={clsx('t-absolute t-top-[4px] t-end-2', 't-cursor-pointer', color)}
       >
         <HeroIcon icon={icon} solid={solid} className={clsx('t-w-[22px] t-h-[22px]')} />
       </div>
