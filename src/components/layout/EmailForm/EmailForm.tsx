@@ -7,7 +7,7 @@ import { TextInput, types } from '@/components/input/TextInput';
 import { useAppSelector } from '@/store';
 
 import lexicon from './lexicon';
-import { usePostNewsletterSubscriptionMutation } from '@/api';
+import { usePostNewsletterSubscriptionMutation } from '@/common/newsletter';
 
 const isEmailValid = (text: string) => {
   const schema = z.string().email();
@@ -41,7 +41,6 @@ export const EmailForm = ({}: EmailFormProps) => {
           placeholder={str.emailAddress}
           submittable
           isValid={isEmailValid}
-
           className={clsx('t-w-11/12')}
           onSubmit={async text => {
             const result = await postSubscription(text);

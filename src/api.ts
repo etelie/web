@@ -31,6 +31,4 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { usePostNewsletterSubscriptionMutation } = apiSlice;
-
 // todo: mutation error response type guard
