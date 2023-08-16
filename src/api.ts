@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import { newsletterEndpoints } from '@/common/newsletter/endpoints';
+
 // todo: set by environment
 const server = {
   protocol: 'http',
@@ -18,16 +20,7 @@ export const apiSlice = createApi({
     prepareHeaders: headers => {},
   }),
   endpoints: builder => ({
-    // todo: localize endpoint definitions to relevant feature
-    postNewsletterSubscription: builder.mutation<void, string>({
-      query: emailAddress => ({
-        url: `/newsletter/subscription/${emailAddress}`,
-        method: 'POST',
-        headers: {
-          'content-type': undefined,
-        },
-      }),
-    }),
+    ...newsletterEndpoints(builder),
   }),
 });
 
