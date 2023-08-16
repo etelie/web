@@ -7,18 +7,18 @@ import { BaseTextInputProps } from '@/components/input/TextInput/BaseTextInput';
 
 const handleSubmit = async (
   text: string,
-  isValid: (text: string) => boolean,
+  isValid: Required<SubmittableTextInputProps>['isValid'],
   setLoading: React.Dispatch<React.SetStateAction<boolean>>,
   setSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
-  // setSubmitted: React.Dispatch<React.SetStateAction<boolean>>,
-  onSubmit?: (text: string) => Promise<boolean>,
+  setSuccessful: React.Dispatch<React.SetStateAction<boolean>>,
+  onSubmit: Required<SubmittableTextInputProps>['onSubmit'],
 ) => {
   if (!isValid(text) || text === '') {
     return;
   }
 
   setLoading(true);
-  onSubmit && (await onSubmit(text));
+  setSuccessful(await onSubmit(text));
   setSubmitted(true);
   setLoading(false);
 };
@@ -48,7 +48,7 @@ const getIcon = (
   if (submitted) {
     return {
       type: successful ? 'CheckCircleIcon' : 'XCircleIcon',
-      color: successful ? 't-text--green-500' : 't-text-red-500',
+      color: successful ? 't-text-green-500' : 't-text-red-500',
       solid: true,
     };
   } else {
@@ -65,7 +65,6 @@ const getIcon = (
 };
 
 export type SubmittableTextInputProps = BaseTextInputProps & {
-  isValid?: (text: string) => boolean;
   onSubmit?: (text: string) => Promise<boolean>;
 };
 
@@ -73,7 +72,7 @@ export const SubmittableTextInput = ({
   name,
   className,
   isValid = _ => true,
-  onSubmit,
+  onSubmit = async _ => true,
   onChange,
   ...options
 }: SubmittableTextInputProps) => {
@@ -91,12 +90,13 @@ export const SubmittableTextInput = ({
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const text = data.get(name ?? id) as string;
-        handleSubmit(text, isValid, setLoading, setSubmitted, onSubmit);
+        handleSubmit(text, isValid, setLoading, setSubmitted, setSuccessful, onSubmit);
       }}
     >
       <BaseTextInput
         {...options}
         name={name ?? id}
+        isValid={isValid}
         onChange={text => handleChange(text, isValid, setValid, setSubmitted, onChange)}
         className={clsx(className, 't-pe-8')} // Normally would require !, but pe is more specific than the internal px
       />
@@ -106,7 +106,7 @@ export const SubmittableTextInput = ({
           const div = event.currentTarget as HTMLDivElement;
           const input = div.previousSibling as HTMLInputElement;
           const text = input.value;
-          handleSubmit(text, isValid, setLoading, setSubmitted, onSubmit);
+          handleSubmit(text, isValid, setLoading, setSubmitted, setSuccessful, onSubmit);
         }}
         className={clsx('t-absolute t-top-[4px] t-end-2', 't-cursor-pointer', color)}
       >

@@ -19,23 +19,38 @@ export type BaseTextInputProps = {
   name?: string;
   direction?: TextInputDirection;
   placeholder?: string;
+  isValid?: (text: string) => boolean;
   onChange?: (text: string) => void;
+};
+
+const handleChange = (
+  text: string,
+  isValid: Required<BaseTextInputProps>['isValid'],
+  setValid: React.Dispatch<React.SetStateAction<boolean>>,
+  onChange: Required<BaseTextInputProps>['onChange'],
+) => {
+  setValid(isValid(text));
+  onChange(text);
 };
 
 export const BaseTextInput = ({
   direction,
   className,
-  onChange,
+  onChange = _ => {},
+  isValid = _ => true,
   ...options
 }: BaseTextInputProps) => {
   const [focused, setFocused] = useState(false);
+  const [valid, setValid] = useState(true);
+
+  const color = valid ? 't-bg-neutral-50' : 't-bg-red-100';
 
   return (
     <input
       {...options}
       onChange={e => {
         e.preventDefault();
-        onChange && onChange(e.target.value);
+        handleChange(e.target.value, isValid, setValid, onChange);
       }}
       onFocus={setFocused.bind(this, true)}
       onBlur={setFocused.bind(this, false)}
@@ -43,9 +58,9 @@ export const BaseTextInput = ({
         className,
         't-w-full',
         direction === directions.rtl && 't-text-right',
-        't-border-black t-border-b-2',
+        `t-border-black t-border-b-2`,
         't-py-[.2rem] t-px-3',
-        focused && 't-bg-neutral-50',
+        (focused || !valid) && color,
         't-text-base',
         't-h-8',
       )}

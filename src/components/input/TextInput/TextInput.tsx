@@ -12,14 +12,14 @@ export type TextInputProps = SubmittableTextInputProps & {
 
 export const TextInput = ({
   className,
-  submittable = false,
   direction = directions.ltr,
+  submittable = false,
   ...options
 }: TextInputProps) => {
   return (
     <div className={clsx(className, 't-relative')}>
       {submittable ? (
-        <SubmittableTextInput {...options} direction={direction} />
+        <SubmittableTextInput {...options} direction={direction}/>
       ) : (
         <BaseTextInput {...options} direction={direction} />
       )}
