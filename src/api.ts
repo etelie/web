@@ -9,11 +9,10 @@ import { EndpointBuilder as _EndpointBuilder } from '@reduxjs/toolkit/dist/query
 
 import { newsletterEndpoints } from '@/common/newsletter/endpoints';
 
-// todo: set by environment
 const server = {
-  protocol: 'http',
-  host: 'localhost',
-  port: 402,
+  protocol: import.meta.env.PROD ? 'https' : 'http',
+  host: import.meta.env.PROD ? 'etelie.com' : 'localhost',
+  port: import.meta.env.PROD ? 443 : 402,
 };
 
 export const apiSlice = createApi({
