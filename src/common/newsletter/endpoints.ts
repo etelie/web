@@ -1,18 +1,6 @@
-import {
-  BaseQueryFn,
-  FetchArgs,
-  FetchBaseQueryError,
-  FetchBaseQueryMeta,
-} from '@reduxjs/toolkit/dist/query';
-import { EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
+import type { EndpointBuilder } from "@/api";
 
-type Builder = EndpointBuilder<
-  BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
-  never,
-  'api'
->;
-
-export const newsletterEndpoints = (builder: Builder) => ({
+export const newsletterEndpoints = (builder: EndpointBuilder) => ({
   postNewsletterSubscription: builder.mutation<void, string>({
     query: emailAddress => ({
       url: `/newsletter/subscription/${emailAddress}`,

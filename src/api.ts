@@ -1,4 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import {
+  BaseQueryFn,
+  FetchArgs,
+  FetchBaseQueryError,
+  FetchBaseQueryMeta,
+} from '@reduxjs/toolkit/query';
+import { EndpointBuilder as _EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
 
 import { newsletterEndpoints } from '@/common/newsletter/endpoints';
 
@@ -23,5 +30,11 @@ export const apiSlice = createApi({
     ...newsletterEndpoints(builder),
   }),
 });
+
+export type EndpointBuilder = _EndpointBuilder<
+  BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, {}, FetchBaseQueryMeta>,
+  never,
+  'api'
+>;
 
 // todo: mutation error response type guard
