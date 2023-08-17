@@ -1,5 +1,6 @@
-export const renderTimestamp = (timestamp: Date): string => {
-  const locale = 'en-US';
+import { useAppSelector } from "@/store";
+
+export const renderTimestamp = (timestamp: Date, locale: string): string => {
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     month: 'long',
     day: '2-digit',

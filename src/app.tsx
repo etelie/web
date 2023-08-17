@@ -3,9 +3,11 @@ import { renderTimestamp } from '@/common/time';
 import { Modal, TitleCard } from '@/components/layout';
 import { EmailForm } from '@/components/layout/EmailForm';
 import { ModalControlOptions } from '@/components/layout/Modal/ModalControl';
+import { useAppSelector } from '@/store';
 
 export default () => {
-  const timestamp = renderTimestamp(new Date());
+  const locale = useAppSelector(state => state.locale.language);
+  const timestamp = renderTimestamp(new Date(), locale);
 
   return (
     <>
