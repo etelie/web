@@ -1,4 +1,4 @@
-import { Lexicon } from '@/types';
+import { Lexicon } from '@/common/locale/types';
 
 export default {
   'en-US': {
