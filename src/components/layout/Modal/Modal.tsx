@@ -31,7 +31,7 @@ export const Modal = ({
   return (
     <>
       <Overlay hidden={hidden} />
-      <div
+      <div // Screen container
         className={clsx(
           hidden && 't-hidden',
           't-flex t-flex-col t-justify-center',
@@ -40,7 +40,7 @@ export const Modal = ({
           't-z-50',
         )}
       >
-        <div
+        <div // Modal background/border
           tabIndex={-1}
           aria-hidden={hidden}
           role='dialog'
@@ -51,7 +51,8 @@ export const Modal = ({
             't-w-96 sm:t-w-3/4 lg:t-w-4xl',
             't-max-h-2xl',
             't-bg-black',
-            't-border-black t-border-t-[18px] t-border-x-[6px] t-border-b-[6px] t-rounded-xl',
+            't-border-black t-border-t-[18px] t-border-x-[6px] t-border-b-[6px]',
+            't-rounded-[18px]', // outer rounding = inner rounding + border width
             'e-shadow-fore',
           )}
         >
@@ -66,12 +67,12 @@ export const Modal = ({
               }}
             />
           )}
-          <div
+          <div // Modal content
             className={clsx(
               't-w-[full-6px] t-h-full',
               't-overflow-y-auto t-overflow-x-clip',
               't-bg-white',
-              't-border-black t-rounded-xl',
+              't-border-black t-rounded-[12px]',
               control !== undefined && 't-rounded-tr-none',
               't-py-6 t-px-8',
             )}
