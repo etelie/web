@@ -1,3 +1,4 @@
+import { onFocus } from '@reduxjs/toolkit/dist/query/core/setupListeners';
 import clsx from 'clsx';
 import { useState } from 'react';
 
@@ -22,6 +23,8 @@ export type BaseTextInputProps = {
   placeholder?: string;
   isValid?: (text: string) => boolean;
   onChange?: (text: string) => void;
+  onFocus?: (text: string) => void;
+  onBlur?: (text: string) => void;
 };
 
 const handleChange = (
@@ -34,11 +37,31 @@ const handleChange = (
   onChange(text);
 };
 
+const handleFocus = (
+  text: string,
+  setFocused: React.Dispatch<React.SetStateAction<boolean>>,
+  onFocus: Required<BaseTextInputProps>['onFocus'],
+) => {
+  setFocused(true);
+  onFocus(text);
+};
+
+const handleBlur = (
+  text: string,
+  setFocused: React.Dispatch<React.SetStateAction<boolean>>,
+  onBlur: Required<BaseTextInputProps>['onBlur'],
+) => {
+  setFocused(false);
+  onBlur(text);
+};
+
 export const BaseTextInput = ({
   direction,
   className,
-  onChange = _ => {},
   isValid = _ => true,
+  onChange = _ => {},
+  onFocus = _ => {},
+  onBlur = _ => {},
   ...options
 }: BaseTextInputProps) => {
   const [focused, setFocused] = useState(false);
@@ -51,10 +74,16 @@ export const BaseTextInput = ({
       {...options}
       onChange={e => {
         e.preventDefault();
-        handleChange(e.target.value, isValid, setValid, onChange);
+        handleChange(e.currentTarget.value, isValid, setValid, onChange);
       }}
-      onFocus={setFocused.bind(this, true)}
-      onBlur={setFocused.bind(this, false)}
+      onFocus={e => {
+        e.preventDefault();
+        handleFocus(e.currentTarget.value, setFocused, onFocus);
+      }}
+      onBlur={e => {
+        e.preventDefault();
+        handleBlur(e.currentTarget.value, setFocused, onBlur);
+      }}
       className={clsx(
         className,
         't-w-full',
@@ -62,7 +91,7 @@ export const BaseTextInput = ({
         `t-border-black t-border-b-2`,
         't-py-[.2rem] t-px-3',
         (focused || !valid) && color,
-        't-text-base',
+        't-font-sans t-text-sm md:t-text-base',
         't-h-8',
       )}
     />
