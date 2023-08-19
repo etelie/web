@@ -21,7 +21,7 @@ export const Base: Story = {
     title: 'etelie.com is under development',
     footerLeft: 'Please check back in later',
     footerRight: 'Last attempt: March 31, 2023 – 17:07 CDT',
-    iconHidden: false,
+    logoHidden: false,
   },
 };
 
@@ -49,7 +49,7 @@ export const ReloadAndClose: Story = {
 export const NoIcon: Story = {
   args: {
     ...Base.args,
-    iconHidden: true,
+    logoHidden: true,
   },
 };
 
