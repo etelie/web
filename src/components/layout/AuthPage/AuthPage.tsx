@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 
+import { SubmitButton } from '~/components/input/SubmitButton';
 import { TextInput, types as text_input_types } from '~/components/input/TextInput';
 import { Modal, sizes as modal_sizes } from '~/components/layout/Modal';
 import { Label } from '~/components/typography/Label';
@@ -26,8 +27,6 @@ const AuthItem = ({ label, className, sensitive = false }: AuthItemProps) => {
 
 // todo: investigate Formik
 
-// todo: form folder
-
 export type AuthPageProps = {};
 
 export const AuthPage = ({}: AuthPageProps) => {
@@ -51,8 +50,7 @@ export const AuthPage = ({}: AuthPageProps) => {
           <AuthItem label={labels.username} className={clsx('t-mb-2')} />
           <AuthItem label={labels.password} sensitive />
           <div className={clsx('t-w-full', 't-flex t-flex-row t-justify-end')}>
-            {/* todo: styled submit button component */}
-            <button type='submit'>Submit</button>
+            <SubmitButton />
           </div>
         </div>
       </form>

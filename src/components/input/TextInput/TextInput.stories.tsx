@@ -6,7 +6,7 @@ import { sleep } from '~/common/concurrency';
 import { TextInput } from './TextInput';
 
 const meta = {
-  title: 'layout/TextInput',
+  title: 'input/TextInput',
   component: TextInput,
   parameters: {},
 } satisfies Meta<typeof TextInput>;
