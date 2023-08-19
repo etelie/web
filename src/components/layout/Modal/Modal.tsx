@@ -13,7 +13,7 @@ export type ModalProps = {
   children?: ReactNode;
   footerLeft?: string;
   footerRight?: string;
-  closeCallback?: VoidFunction;
+  closeCallback?: () => void;
 };
 
 export const Modal = ({

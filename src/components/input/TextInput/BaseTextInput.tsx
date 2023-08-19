@@ -4,6 +4,7 @@ import { useState } from 'react';
 export const types = {
   text: 'text',
   email: 'email',
+  password: 'password',
 } as const;
 export type TextInputType = (typeof types)[keyof typeof types];
 
