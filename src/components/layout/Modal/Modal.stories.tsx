@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { EmailForm } from '../EmailForm';
 
-import { MockStore } from '@/stories/decorators';
+import { MockStore } from '~/stories/decorators';
 
 import { Modal } from './Modal';
 import { ModalControlOptions } from './ModalControl';

@@ -1,9 +1,9 @@
-import { HeroIcon, HeroIconProps } from '@/components/icons/HeroIcon';
+import { HeroIcon, HeroIconProps } from '~/components/icons/HeroIcon';
 import { useId, useState } from 'react';
 import clsx from 'clsx';
 
-import { BaseTextInput } from '@/components/input/TextInput/BaseTextInput';
-import { BaseTextInputProps } from '@/components/input/TextInput/BaseTextInput';
+import { BaseTextInput } from '~/components/input/TextInput/BaseTextInput';
+import { BaseTextInputProps } from '~/components/input/TextInput/BaseTextInput';
 
 const handleSubmit = async (
   text: string,

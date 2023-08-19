@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import z from 'zod';
 import { directions, types } from './BaseTextInput';
 
-import { sleep } from '@/common/concurrency';
+import { sleep } from '~/common/concurrency';
 import { TextInput } from './TextInput';
 
 const meta = {

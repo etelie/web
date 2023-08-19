@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { MockStore } from '@/stories/decorators';
+import { MockStore } from '~/stories/decorators';
 
 import { EmailForm } from './EmailForm';
 

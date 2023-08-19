@@ -1,3 +1,3 @@
-import { apiSlice } from '@/api';
+import { apiSlice } from '~/api';
 
 export const { usePostNewsletterSubscriptionMutation } = apiSlice;

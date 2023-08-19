@@ -1,4 +1,4 @@
-import { BookmarkIcon, ReloadIcon } from '@/components/icons';
+import { BookmarkIcon, ReloadIcon } from '~/components/icons';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ModalControl, ModalControlOptions } from './ModalControl';

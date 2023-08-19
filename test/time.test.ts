@@ -1,6 +1,6 @@
 import { assert, describe, expect, test } from 'vitest';
 
-import { renderTimestamp } from '@/common/time';
+import { renderTimestamp } from '~/common/time';
 
 describe('common/time', () => {
   test.each([new Date('1995-12-17T03:24:00')])('renderTimestamp', (date: Date) => {

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BookmarkIcon } from './BookmarkIcon';
-import { IconBlackBackgroundWithMargin } from '@/stories/decorators';
+import { IconBlackBackgroundWithMargin } from '~/stories/decorators';
 
 const meta = {
   title: 'icons/BookmarkIcon',

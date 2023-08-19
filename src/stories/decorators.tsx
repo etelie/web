@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Provider } from 'react-redux';
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore';
 
-import { mockStore } from '@/store';
+import { mockStore } from '~/store';
 
 export const MockStoreWithStore =
   (store: ToolkitStore) => (Story: StoryFn, context: StoryContext) => {

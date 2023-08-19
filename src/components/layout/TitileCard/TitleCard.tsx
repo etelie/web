@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { EtelieIcon } from '@/components/icons';
+import { EtelieIcon } from '~/components/icons';
 
 export type TitleCardProps = {
   hidden?: boolean;

@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { ReactNode, useId } from 'react';
 
-import { EtelieIcon } from '@/components/icons';
-import { HeadingText, SubHeadingText } from '@/components/typography';
+import { EtelieIcon } from '~/components/icons';
+import { HeadingText, SubHeadingText } from '~/components/typography';
+
 import { ModalControl, ModalControlOptions } from './ModalControl';
 
 export const sizes = {

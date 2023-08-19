@@ -1,7 +1,5 @@
-import { TextInput, types } from '@/components/input/TextInput';
-import { Modal, sizes } from '@/components/layout/Modal';
-
-// todo: change to use ~ for local alias
+import { TextInput, types } from '~/components/input/TextInput';
+import { Modal, sizes } from '~/components/layout/Modal';
 
 type AuthItemProps = {
   label: string;

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { ReactNode } from 'react';
 
-import { CloseIcon, ReloadIcon } from '@/components/icons';
+import { CloseIcon, ReloadIcon } from '~/components/icons';
 
 const MODAL_BUTTON_WIDTH = 39;
 const SEPARATOR_WIDTH = 8;

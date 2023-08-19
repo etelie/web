@@ -1,6 +1,6 @@
-import type { EndpointBuilder } from "@/api";
+import type { EndpointBuilder } from '~/api';
 
-const basePath = '/newsletter'
+const basePath = '/newsletter';
 
 export const newsletterEndpoints = (builder: EndpointBuilder) => ({
   postNewsletterSubscription: builder.mutation<void, string>({

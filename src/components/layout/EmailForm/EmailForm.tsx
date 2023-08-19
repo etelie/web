@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import z from 'zod';
 
-import { SubHeadingText } from '@/components/typography';
-import { TextInput, types } from '@/components/input/TextInput';
+import { SubHeadingText } from '~/components/typography';
+import { TextInput, types } from '~/components/input/TextInput';
 
-import { useAppSelector } from '@/store';
+import { useAppSelector } from '~/store';
 
 import lexicon from './lexicon';
-import { usePostNewsletterSubscriptionMutation } from '@/common/newsletter';
+import { usePostNewsletterSubscriptionMutation } from '~/common/newsletter';
 
 const isEmailValid = (text: string) => {
   const schema = z.string().email();
@@ -42,8 +42,8 @@ export const EmailForm = ({}: EmailFormProps) => {
           isValid={isEmailValid}
           className={clsx('t-w-11/12')}
           onSubmit={async text => {
-            const result = await postSubscription(text)
-            return result.hasOwnProperty('data')
+            const result = await postSubscription(text);
+            return result.hasOwnProperty('data');
           }}
         />
       </div>
