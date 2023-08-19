@@ -1,5 +1,7 @@
 import { TextInput, types } from '@/components/input/TextInput';
-import { Modal } from '../Modal';
+import { Modal, sizes } from '@/components/layout/Modal';
+
+// todo: change to use ~ for local alias
 
 type AuthItemProps = {
   label: string;
@@ -19,7 +21,7 @@ export type AuthPageProps = {};
 
 export const AuthPage = ({}: AuthPageProps) => {
   return (
-    <Modal title={'Authentication'}>
+    <Modal title={'Authentication'} size={sizes.sm}>
       <div className='t-flex t-flex-col t-justify-between t-items-start'>
         <AuthItem label='User name' />
         <AuthItem label='Password' sensitive />
