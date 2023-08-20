@@ -13,7 +13,7 @@ export default () => {
   return (
     <>
       <TitleCard />
-      {false ? ( // todo: use React Router
+      {true ? ( // todo: use React Router
         <Modal
           size={sizes.md}
           hidden={false}
