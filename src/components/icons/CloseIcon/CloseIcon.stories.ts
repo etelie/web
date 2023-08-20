@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { CloseIcon } from './CloseIcon';
-import { IconBlackBackground } from '@/stories/decorators';
+import { IconBlackBackground } from '~/stories/decorators';
 
 const meta = {
   title: 'icons/CloseIcon',

@@ -7,7 +7,7 @@ import {
 } from '@reduxjs/toolkit/query';
 import { EndpointBuilder as _EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
 
-import { newsletterEndpoints } from '@/common/newsletter/endpoints';
+import { newsletterEndpoints } from '~/common/newsletter/endpoints';
 
 const server = {
   protocol: import.meta.env.PROD ? 'https' : 'http',

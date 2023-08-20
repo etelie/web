@@ -1,19 +1,28 @@
 import clsx from 'clsx';
 import { ReactNode, useId } from 'react';
 
-import { EtelieIcon } from '@/components/icons';
-import { HeadingText, SubHeadingText } from '@/components/typography';
+import { EtelieIcon } from '~/components/icons';
+import { HeadingText, SubHeadingText } from '~/components/typography';
+
 import { ModalControl, ModalControlOptions } from './ModalControl';
+
+export const sizes = {
+  sm: 'sm',
+  md: 'md',
+} as const;
+
+export type ModalSize = (typeof sizes)[keyof typeof sizes];
 
 export type ModalProps = {
   title: string;
+  size?: ModalSize;
   control?: ModalControlOptions;
   hidden?: boolean;
-  iconHidden?: boolean;
+  hiddenLogo?: boolean;
   children?: ReactNode;
   footerLeft?: string;
   footerRight?: string;
-  closeCallback?: VoidFunction;
+  closeCallback?: () => void;
 };
 
 export const Modal = ({
@@ -22,11 +31,19 @@ export const Modal = ({
   footerLeft,
   footerRight,
   control,
+  size = sizes.md,
   hidden = false,
-  iconHidden = false,
+  hiddenLogo = false,
   closeCallback = () => {},
 }: ModalProps) => {
   const titleId = useId();
+
+  const width =
+    size === sizes.md
+      ? 't-w-96 sm:t-w-3/4 lg:t-w-4xl'
+      : size === sizes.sm
+      ? 't-w-96 md:t-w-112'
+      : Error(`Invalid modal size value :: [${size}]`);
 
   return (
     <>
@@ -48,7 +65,7 @@ export const Modal = ({
             't-relative',
             't-mx-auto t-my-auto',
             't-overflow-x-hidden t-overflow-y-auto',
-            't-w-96 sm:t-w-3/4 lg:t-w-4xl',
+            width,
             't-max-h-2xl',
             't-bg-black',
             't-border-black t-border-t-[18px] t-border-x-[6px] t-border-b-[6px]',
@@ -78,29 +95,31 @@ export const Modal = ({
             )}
           >
             <div className={clsx('t-flex t-flex-col t-justify-between', 't-h-full')}>
-              {iconHidden ? null : (
+              {hiddenLogo ? null : (
                 <div className={clsx('t-mb-7')}>
                   <EtelieIcon size={50} />
                 </div>
               )}
-              <HeadingText id={titleId} className={clsx(iconHidden && 't-mt-3', 't-mb-3')}>
+              <HeadingText id={titleId} className={clsx(hiddenLogo && 't-mt-3', 't-mb-3')}>
                 {title}
               </HeadingText>
               {children && <div className={clsx('t-my-1.5')}>{children}</div>}
-              <footer
-                className={clsx(
-                  't-flex t-flex-col sm:t-flex-row t-justify-between',
-                  't-mt-3',
-                  't-space-y-1 sm:t-space-y-0 sm:t-space-x-3',
-                )}
-              >
-                <SubHeadingText className={clsx('t-relative t-start-0')}>
-                  {footerLeft}
-                </SubHeadingText>
-                <SubHeadingText className={clsx('t-relative t-end-0')}>
-                  {footerRight}
-                </SubHeadingText>
-              </footer>
+              {(footerLeft || footerRight) && (
+                <footer
+                  className={clsx(
+                    't-flex t-flex-col sm:t-flex-row t-justify-between',
+                    't-mt-3',
+                    't-space-y-1 sm:t-space-y-0 sm:t-space-x-3',
+                  )}
+                >
+                  <SubHeadingText className={clsx('t-relative t-start-0')}>
+                    {footerLeft}
+                  </SubHeadingText>
+                  <SubHeadingText className={clsx('t-relative t-end-0')}>
+                    {footerRight}
+                  </SubHeadingText>
+                </footer>
+              )}
             </div>
           </div>
         </div>

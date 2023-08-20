@@ -1,8 +1,8 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
-import localeReducer from '@/common/locale/localeSlice';
-import { apiSlice, mockApiSlice } from '@/api';
+import localeReducer from '~/common/locale/localeSlice';
+import { apiSlice, mockApiSlice } from '~/api';
 
 const store = configureStore({
   reducer: {
