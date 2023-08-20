@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { HeroIcon } from '~/components/icons/HeroIcon';
 
 import { SubmitButton } from '~/components/input/SubmitButton';
 import { TextInput, types as text_input_types } from '~/components/input/TextInput';
@@ -14,6 +15,7 @@ type AuthItemProps = {
 };
 
 const AuthItem = ({ label, className, sensitive = false }: AuthItemProps) => {
+  // todo: lower label, zindex + 1, higher on focus, animated transition to/from, integrate with TextInput
   return (
     <div className={clsx(className, 't-flex t-flex-col t-justify-between t-items-start')}>
       <Label className={clsx('-t-mb-[2px]')}>{label}</Label>
@@ -36,7 +38,7 @@ export const AuthPage = ({}: AuthPageProps) => {
   };
 
   return (
-    <Modal title={'Authentication'} size={modal_sizes.sm}>
+    <Modal title={'Identity verification'} size={modal_sizes.sm}>
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -46,11 +48,15 @@ export const AuthPage = ({}: AuthPageProps) => {
           console.log(`username: ${username}\npassword: ${password}`);
         }}
       >
-        <div className={clsx('t-flex t-flex-col t-justify-between t-items-start', 't-mt-2')}>
-          <AuthItem label={labels.username} className={clsx('t-mb-2')} />
-          <AuthItem label={labels.password} sensitive />
-          <div className={clsx('t-w-full', 't-flex t-flex-row t-justify-end')}>
-            <SubmitButton />
+        <div className={clsx('t-flex t-flex-row t-justify-between')}>
+          <div className={clsx('t-flex t-flex-col t-justify-between t-items-start', 't-mt-2')}>
+            <AuthItem label={labels.username} className={clsx('t-mb-3')} />
+            <AuthItem label={labels.password} sensitive />
+          </div>
+          <div className={clsx('t-flex t-flex-col t-justify-center t-items-center', 't-mr-4 md:t-mr-9')}>
+            <SubmitButton>
+              <HeroIcon icon='ArrowRightIcon' className={clsx('t-w-6')} />
+            </SubmitButton>
           </div>
         </div>
       </form>
