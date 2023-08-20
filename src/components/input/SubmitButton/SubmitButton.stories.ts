@@ -12,5 +12,7 @@ type Story = StoryObj<typeof meta>;
 export default meta;
 
 export const Base: Story = {
-  args: {},
+  args: {
+    children: 'SubmitButton'
+  },
 };
