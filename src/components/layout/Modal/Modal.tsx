@@ -18,7 +18,7 @@ export type ModalProps = {
   size?: ModalSize;
   control?: ModalControlOptions;
   hidden?: boolean;
-  logoHidden?: boolean;
+  hiddenLogo?: boolean;
   children?: ReactNode;
   footerLeft?: string;
   footerRight?: string;
@@ -33,7 +33,7 @@ export const Modal = ({
   control,
   size = sizes.md,
   hidden = false,
-  logoHidden = false,
+  hiddenLogo = false,
   closeCallback = () => {},
 }: ModalProps) => {
   const titleId = useId();
@@ -95,12 +95,12 @@ export const Modal = ({
             )}
           >
             <div className={clsx('t-flex t-flex-col t-justify-between', 't-h-full')}>
-              {logoHidden ? null : (
+              {hiddenLogo ? null : (
                 <div className={clsx('t-mb-7')}>
                   <EtelieIcon size={50} />
                 </div>
               )}
-              <HeadingText id={titleId} className={clsx(logoHidden && 't-mt-3', 't-mb-3')}>
+              <HeadingText id={titleId} className={clsx(hiddenLogo && 't-mt-3', 't-mb-3')}>
                 {title}
               </HeadingText>
               {children && <div className={clsx('t-my-1.5')}>{children}</div>}
