@@ -26,21 +26,20 @@ export const AuthPage = ({}: AuthPageProps) => {
           console.log(`username: ${username}\npassword: ${password}`);
         }}
       >
-        <div className={clsx('t-flex t-flex-row t-justify-between')}>
-          <div className={clsx('t-flex t-flex-col t-justify-between t-items-start', 't-mt-2')}>
-            <AuthItem label={labels.username} className={clsx('t-mb-3')} />
-            <AuthItem label={labels.password} sensitive />
-          </div>
-          <div
-            className={clsx(
-              't-flex t-flex-col t-justify-center t-items-center',
-              't-mr-6 md:t-mr-10',
-            )}
-          >
-            <SubmitButton transparent>
-              <HeroIcon icon='ArrowRightCircleIcon' className={clsx('t-w-12 t-stroke-1')} />
-            </SubmitButton>
-          </div>
+        <div
+          className={clsx(
+            't-flex t-flex-col t-justify-between t-items-start',
+            't-mt-2',
+            't-w-full',
+          )}
+        >
+          <AuthItem label={labels.username} className={clsx('t-mb-3', 't-w-full')} />
+          <AuthItem label={labels.password} className={clsx('t-w-full')} sensitive />
+        </div>
+        <div className={clsx('t-flex t-flex-row t-justify-center', 't-mt-4')}>
+          <SubmitButton transparent>
+            <HeroIcon icon='ArrowRightCircleIcon' className={clsx('t-w-10 t-stroke-1')} />
+          </SubmitButton>
         </div>
       </form>
     </Modal>

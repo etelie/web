@@ -13,10 +13,11 @@ export const AuthItem = ({ label, className, sensitive = false }: AuthItemProps)
   // todo: lower label, zindex + 1, higher on focus, animated transition to/from, integrate with TextInput
   return (
     <div className={clsx(className, 't-flex t-flex-col t-justify-between t-items-start')}>
-      <Label className={clsx('-t-mb-[2px]')}>{label}</Label>
+      <Label >{label}</Label>
       <TextInput
         type={sensitive ? text_input_types.password : text_input_types.text}
         name={label}
+        className={clsx('t-w-full')}
       />
     </div>
   );
