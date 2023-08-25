@@ -24,7 +24,6 @@ export const SubmitButton = ({ children, className, transparent = false }: Submi
         hovered ? 't-bg-opacity-70' : 't-bg-opacity-60',
         't-inner-border-black',
         't-rounded-md',
-        't-py-2 t-px-4',
         't-text-base t-font-semibold',
       )}
     >

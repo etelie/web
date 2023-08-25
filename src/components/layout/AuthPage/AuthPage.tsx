@@ -34,11 +34,11 @@ export const AuthPage = ({}: AuthPageProps) => {
           <div
             className={clsx(
               't-flex t-flex-col t-justify-center t-items-center',
-              't-mr-2 md:t-mr-4',
+              't-mr-6 md:t-mr-10',
             )}
           >
-            <SubmitButton>
-              <HeroIcon icon='ArrowRightIcon' className={clsx('t-w-6')} />
+            <SubmitButton transparent>
+              <HeroIcon icon='ArrowRightCircleIcon' className={clsx('t-w-12 t-stroke-1')} />
             </SubmitButton>
           </div>
         </div>
