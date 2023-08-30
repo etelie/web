@@ -1,4 +1,4 @@
-import { assert, describe, expect, test } from 'vitest';
+import { describe, expect, test } from 'vitest';
 
 import { renderTimestamp } from '~/common/time';
 

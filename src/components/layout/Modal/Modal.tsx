@@ -37,13 +37,13 @@ export const Modal = ({
   closeCallback = () => {},
 }: ModalProps) => {
   const titleId = useId();
-
   const width =
     size === sizes.md
       ? 't-w-96 sm:t-w-3/4 lg:t-w-4xl'
       : size === sizes.sm
       ? 't-w-96 md:t-w-112'
       : Error(`Invalid modal size value :: [${size}]`);
+  const useFooter = footerLeft || footerRight;
 
   return (
     <>
@@ -103,8 +103,10 @@ export const Modal = ({
               <HeadingText id={titleId} className={clsx(hiddenLogo && 't-mt-3', 't-mb-3')}>
                 {title}
               </HeadingText>
-              {children && <div className={clsx('t-my-1.5')}>{children}</div>}
-              {(footerLeft || footerRight) && (
+              {children && (
+                <div className={clsx('t-mt-1.5', useFooter && 't-mb-1.5')}>{children}</div>
+              )}
+              {useFooter && (
                 <footer
                   className={clsx(
                     't-flex t-flex-col sm:t-flex-row t-justify-between',

@@ -1,5 +1,3 @@
-import { useAppSelector } from '~/store';
-
 export const renderTimestamp = (timestamp: Date, locale: string): string => {
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     month: 'long',
