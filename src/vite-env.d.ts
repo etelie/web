@@ -1,13 +1,13 @@
 /// <reference types="vite/client" />
 
-import { ExecutionEnvironment } from './src/common/environment'
+import { ExecutionEnvironment } from './src/common/environment';
 
-type NodeEnv = "development" | "test" | "production";
+type NodeEnv = 'development' | 'test' | 'production';
 
 interface ImportMeta extends ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
 interface ImportMetaEnv {
-  readonly EXECUTION_ENVIRONMENT: ExecutionEnvironment,
+  readonly EXECUTION_ENVIRONMENT: ExecutionEnvironment;
 }

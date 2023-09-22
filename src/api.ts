@@ -10,8 +10,6 @@ import { EndpointBuilder as _EndpointBuilder } from '@reduxjs/toolkit/dist/query
 import { newsletterEndpoints } from '~/common/newsletter/endpoints';
 import { serverConfig } from './common/environment';
 
-console.log('server', serverConfig);
-
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
