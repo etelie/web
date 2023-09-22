@@ -8,15 +8,14 @@ import {
 import { EndpointBuilder as _EndpointBuilder } from '@reduxjs/toolkit/dist/query/endpointDefinitions';
 
 import { newsletterEndpoints } from '~/common/newsletter/endpoints';
-import { getServerConfig } from './common/environment';
+import { serverConfig } from './common/environment';
 
-const server = getServerConfig(import.meta.env.EXECUTION_ENVIRONMENT);
-console.log('server', server);
+console.log('server', serverConfig);
 
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${server.protocol}://${server.apiHost}:${server.port}`,
+    baseUrl: `${serverConfig.protocol}://${serverConfig.apiHost}:${serverConfig.port}`,
     credentials: 'same-origin',
     headers: {
       'content-type': 'application/json',

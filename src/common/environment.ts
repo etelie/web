@@ -5,15 +5,21 @@ export const executionEnvironments = {
   development: 'development',
 } as const;
 
-export type ExecutionEnvironment = 'production' | 'staging' | 'test' | 'development';
+export type ExecutionEnvironment =
+  (typeof executionEnvironments)[keyof typeof executionEnvironments];
 
-export const isDeployable = (env: ExecutionEnvironment) =>
-  env === 'production' || env === 'staging';
+export const executionEnvironment = import.meta.env.CLIENT__EXECUTION_ENVIRONMENT;
 
-export const getServerConfig = (env: ExecutionEnvironment) => ({
-  protocol: isDeployable(env) ? 'https' : 'http',
-  origin: env === 'production' ? 'etelie.com' : env === 'staging' ? 'qa.etelie.com' : 'localhost',
-  apiHost:
-    env === 'production' ? 'api.etelie.com' : env === 'staging' ? 'api.qa.etelie.com' : 'localhost',
-  port: isDeployable(env) ? 443 : 402,
-});
+export const isProduction = executionEnvironment === 'production';
+export const isStaging = executionEnvironment === 'staging';
+export const isTest = executionEnvironment === 'test';
+export const isDevelopment = executionEnvironment === 'development';
+
+export const isDeployable = isProduction || isStaging;
+
+export const serverConfig = {
+  protocol: isDeployable ? 'https' : 'http',
+  origin: isProduction ? 'etelie.com' : isStaging ? 'qa.etelie.com' : 'localhost',
+  apiHost: isProduction ? 'api.etelie.com' : isStaging ? 'api.qa.etelie.com' : 'localhost',
+  port: isDeployable ? 443 : 402,
+};
