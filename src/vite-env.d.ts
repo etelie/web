@@ -1,13 +1,13 @@
 /// <reference types="vite/client" />
 
-type NodeEnv = "development" | "test" | "production";
+import { ExecutionEnvironment } from './src/common/environment';
 
-interface ImportMetaEnv {
-  readonly VITE_APP_TITLE: string;
+type NodeEnv = 'development' | 'test' | 'production';
 
-  readonly BUILD_TAG?: string; // Required in prod and qa
+interface ImportMeta extends ImportMeta {
+  readonly env: ImportMetaEnv;
 }
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
+interface ImportMetaEnv {
+  readonly EXECUTION_ENVIRONMENT: ExecutionEnvironment;
 }
