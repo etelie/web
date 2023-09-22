@@ -16,10 +16,8 @@ export const UnderDevelopmentPage = ({}: UnderDevelopmentPageProps) => {
       hidden={false}
       control={ModalControlOptions.RELOAD}
       title={'etelie.com is under development'}
-      footerLeft='Please check back in later'
-      footerRight={timestamp}
     >
-      {false && <EmailForm />}
+      <EmailForm />
     </Modal>
   );
 };
