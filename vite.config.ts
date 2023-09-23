@@ -7,7 +7,7 @@ import mkcert from 'vite-plugin-mkcert';
 
 const r = path.resolve.bind(this, __dirname);
 
-export const baseConfig: UserConfig = {
+export default defineConfig(({ mode }) => ({
   envPrefix: 'CLIENT__',
   envDir: r('./env'),
   clearScreen: false,
@@ -34,14 +34,11 @@ export const baseConfig: UserConfig = {
   build: {
     outDir: r('./dist'),
     manifest: true,
-    sourcemap: 'inline',
+    sourcemap: mode !== 'production',
   },
   preview: {
     strictPort: true,
     port: 3001,
     https: true,
   },
-};
-
-// https://vitejs.dev/config/
-export default defineConfig(baseConfig);
+}));
