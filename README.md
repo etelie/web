@@ -67,7 +67,7 @@ Environment variables are specified in `env/.env`. If you need to add an environ
 process you must follow:
 
 1. Add the variable to `env/.env`
-    - If the variable should be exposed to the client, prefix it with `CLIENT__` (defined in vite.config.ts)
+    - If the variable should be exposed to the client, prefix it with `CLIENT__` (defined in vite.config.[env].ts)
     - Never allow secrets to be visible to the client
 2. If the value is not secret, add it to `env/.env.template`. If the value is secret, still add the variable to the
    template file, but leave it unassigned. (e.g. `TWITTER_API_TOKEN=`)

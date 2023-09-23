@@ -1,28 +1,27 @@
 /// <reference types="vitest" />
 
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import mkcert from "vite-plugin-mkcert";
+import { defineConfig, UserConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import path from 'path';
+import mkcert from 'vite-plugin-mkcert';
 
 const r = path.resolve.bind(this, __dirname);
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  envPrefix: "CLIENT__",
-  envDir: r("./env"),
+export default defineConfig(({ mode }) => ({
+  envPrefix: 'CLIENT__',
+  envDir: r('./env'),
   clearScreen: false,
-  logLevel: "info",
+  logLevel: 'info',
   plugins: [react(), mkcert()],
-  appType: "spa",
+  appType: 'spa',
   resolve: {
-    extensions: [".js", ".ts", ".jsx", ".tsx", ".mjs", ".mts", ".json"],
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.mjs', '.mts', '.json'],
     alias: {
-      "~": r("./src"),
+      '~': r('./src'),
     },
   },
   test: {
-    environment: "node",
+    environment: 'node',
   },
   css: {
     devSourcemap: true,
@@ -33,12 +32,13 @@ export default defineConfig({
     https: true,
   },
   build: {
-    outDir: r("./dist"),
+    outDir: r('./dist'),
     manifest: true,
+    sourcemap: mode !== 'production',
   },
   preview: {
     strictPort: true,
     port: 3001,
     https: true,
   },
-});
+}));
